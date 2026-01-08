@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from "react"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 
 const colorWords = ["real", "posible", "mágico", "tuyo", "único"]
 
@@ -38,7 +39,7 @@ export default function Hero() {
         animate={{ opacity: 1, x: 0, rotate: -5 }}
         transition={{ duration: 1, delay: 0.5 }}
       >
-        <img src="/person-doing-yoga-in-nature-golden-hour.jpg" alt="Persona en naturaleza" className="w-full h-full object-cover" />
+        <Image src="/person-doing-yoga-in-nature-golden-hour.jpg" alt="Persona en naturaleza" className="w-full h-full object-cover"  width={100} height={100}/>
       </motion.div>
 
       {/* Floating Images - Right Side */}
@@ -49,7 +50,7 @@ export default function Hero() {
         animate={{ opacity: 1, x: 0, rotate: 3 }}
         transition={{ duration: 1, delay: 0.7 }}
       >
-        <img src="/aurora-borealis-landscape-cinematic.jpg" alt="Aurora boreal" className="w-full h-full object-cover" />
+        <Image src="/aurora-borealis-landscape-cinematic.jpg" alt="Aurora boreal" className="w-full h-full object-cover"  width={100} height={100}/>
       </motion.div>
 
       {/* Small floating card - bottom left */}
@@ -60,7 +61,7 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.9 }}
       >
-        <img src="/musicians-playing-in-desert-golden-hour.jpg" alt="Músicos en desierto" className="w-full aspect-video object-cover" />
+        <Image src="/musicians-playing-in-desert-golden-hour.jpg" alt="Músicos en desierto" className="w-full aspect-video object-cover" width={100} height={100}/>
         <div className="p-3 flex items-center gap-2">
           <span className="text-xs text-muted-foreground">Try click</span>
           <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none">
@@ -92,7 +93,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 exit={{ opacity: 0, y: -20, filter: "blur(10px)" }}
                 transition={{ duration: 0.5 }}
-                className="absolute left-0 -top-20 bg-linear-to-r from-luma-green via-luma-blue to-luma-orange bg-clip-text text-black"
+                className="absolute left-0 -top-22 bg-linear-to-r from-luma-green via-luma-blue to-luma-orange bg-clip-text"
               >
                 {colorWords[currentWordIndex]}
               </motion.span>
@@ -129,7 +130,7 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 0.4 }}
       >
-        <img src="/silhouette-profile-man-with-beard-looking-up-dark-.jpg" alt="Silueta de perfil" className="w-full h-auto" />
+        <Image src="/silhouette-profile-man-with-beard-looking-up-dark-.jpg" alt="Silueta de perfil" className="w-full h-auto" width={100} height={100}/>
       </motion.div>
     </section>
   )

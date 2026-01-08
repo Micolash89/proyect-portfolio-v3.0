@@ -48,7 +48,7 @@ export default function Features() {
               initial={{ opacity: 0, y: 50, scale: 0.9 }}
               animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="flex-shrink-0 w-72 md:w-80 p-6 rounded-3xl bg-card border border-border/30"
+              className="shrink-0 w-72 md:w-80 p-6 rounded-3xl bg-card border border-border/30"
             >
               <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
               <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{feature.description}</p>
@@ -73,7 +73,7 @@ export default function Features() {
                 <div className="flex gap-2">
                   {feature.images.map((img, i) => (
                     <div key={i} className="flex-1 rounded-xl overflow-hidden">
-                      <img src={img || "/placeholder.svg"} alt="" className="w-full aspect-[3/4] object-cover" />
+                      <img src={img || "/placeholder.svg"} alt="" className="w-full aspect-3/4 object-cover" />
                     </div>
                   ))}
                 </div>

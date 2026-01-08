@@ -29,7 +29,7 @@ export default function FreedomsSection() {
           alt="Fondo naturaleza"
           className="w-full h-full object-cover opacity-80"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/30" />
+        <div className="absolute inset-0 bg-linear-to-r from-black/50 via-transparent to-black/30" />
       </motion.div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 w-full">

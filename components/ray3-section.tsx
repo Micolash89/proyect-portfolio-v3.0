@@ -79,7 +79,7 @@ export default function Ray3Section() {
             >
               <div className="relative w-48 aspect-video rounded-xl overflow-hidden">
                 <img src="/martial-arts-fighters-action-cinematic.jpg" alt="Física avanzada" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-3">
+                <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent flex items-end p-3">
                   <span className="text-xs text-white">
                     Advanced Physics
                     <br />& Simulations

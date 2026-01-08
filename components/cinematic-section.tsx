@@ -30,7 +30,7 @@ export default function CinematicSection() {
           alt="Fondo atmosférico"
           className="w-full h-full object-cover opacity-60"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-dark-bg via-transparent to-transparent" />
       </motion.div>
 
       {/* Central figure */}

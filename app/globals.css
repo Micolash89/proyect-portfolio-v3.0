@@ -5,9 +5,9 @@
 
 :root {
   /* Luma AI sage green/cream theme */
-  --background: oklch(0.94 0.02 140);
+  --background: oklch(100% 0.00011 271.152);
   --foreground: oklch(0.15 0 0);
-  --card: oklch(0.96 0.015 140);
+  --card: oklch(100% 0.00011 271.152);
   --card-foreground: oklch(0.15 0 0);
   --popover: oklch(0.96 0.015 140);
   --popover-foreground: oklch(0.15 0 0);

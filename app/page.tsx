@@ -8,10 +8,12 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import Projects from "@/components/projects"
 import Technologies from "@/components/technologies"
+import AnimatedSilhouetteHero from "@/components/animated-silhouette-hero"
 
 export default function Home() {
   return (
     <main className="relative">
+      <AnimatedSilhouetteHero />
       <Navigation />
       <Hero />
       {/* <IconSelector /> */}

@@ -7,6 +7,7 @@ import {
   useTransform,
   useSpring,
   AnimatePresence,
+  useInView,
 } from "framer-motion";
 import Image from "next/image";
 
@@ -14,6 +15,7 @@ const colorWords = ["real", "posible", "mágico", "tuyo", "único"];
 
 export default function AnimatedSilhouetteHero() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
   const [phase, setPhase] = useState<"center" | "bottom">("center");
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
@@ -21,10 +23,12 @@ export default function AnimatedSilhouetteHero() {
     target: containerRef,
     offset: ["start start", "end start"],
   });
+ 
 
   const { scrollY } = useScroll();
 
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
+
 
   const smoothScrollY = useSpring(scrollY, {
     stiffness: 80,
@@ -58,69 +62,73 @@ export default function AnimatedSilhouetteHero() {
         {/* Animated Silhouette Image */}
 
         {/* Floating Images - Left Side */}
-        <motion.div
-          className="absolute left-4 md:left-12 top-1/4 w-48 md:w-64 aspect-3/4 rounded-2xl overflow-hidden shadow-2xl"
-          style={{ y }}
-          initial={{ opacity: 0, x: -100, rotate: -5,  }}
-          animate={{
-            opacity: phase === "bottom" ? 1 : 0,
-            x: phase === "bottom" ? 0 : 50,
-            rotate: phase === "bottom" ? -5 : -5,
-            
-          }}
-          transition={{ duration: 2, delay: 0.5, ease: "easeOut" }}
-        >
-          <Image
-            src="/images/batman.jpg"
-            alt="Persona en naturaleza"
-            className="w-full h-full object-cover"
-            width={100}
-            height={100}
-          />
-        </motion.div>
+        
+          <motion.div
+            className="absolute left-4 md:left-12 top-1/4 w-48 md:w-64 aspect-3/4 rounded-2xl overflow-hidden shadow-2xl"
+            initial={{ opacity: 0, x: -100, rotate: -5 }}
+            style={{ y}}
+            animate={
+              isInView
+                ? {
+                    opacity: phase === "bottom" ? 1 : 0,
+                    x: phase === "bottom" ? 0 : 50,
+                    rotate: phase === "bottom" ? -5 : -5,
+                  }
+                : {}
+            }
+            transition={{ duration: 2, delay: 0.5, ease: "easeOut" }}
+          >
+            <Image
+              src="/images/batman.jpg"
+              alt="Persona en naturaleza"
+              className="w-full h-full object-cover"
+              width={100}
+              height={100}
+            />
+          </motion.div>
 
-        {/* Floating Images - Right Side */}
-        <motion.div
-          className="absolute right-4 md:right-12 top-1/3 w-56 md:w-72 aspect-video rounded-2xl overflow-hidden shadow-2xl "
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, 150]) }}
-          initial={{ opacity: 0, x: 100, rotate: 3 }}
-          // animate={{ opacity: 1, x: 0, rotate: 3 }}
-          animate={{
-            opacity: phase === "bottom" ? 1 : 0,
-            y: phase === "bottom" ? 0 : 40,
-            rotate: phase === "bottom" ? 3 : 3,
-          }}
-          transition={{ duration: 2, delay: 0.7, ease: "easeOut" }}
-        >
-          <Image
-            src="/aurora-borealis-landscape-cinematic.jpg"
-            alt="Aurora boreal"
-            className="w-full h-full object-cover"
-            width={100}
-            height={100}
-          />
-        </motion.div>
+          {/* Floating Images - Right Side */}
+          <motion.div
+            className="absolute right-4 md:right-12 top-1/3 w-56 md:w-72 aspect-video rounded-2xl overflow-hidden shadow-2xl "
+            style={{ y: useTransform(scrollYProgress, [0, 1], [0, 150]) }}
+            initial={{ opacity: 0, x: 100, rotate: 3 }}
+            animate={{ opacity: 1, x: 0, rotate: 3 }}
+            // animate={{
+            //   opacity: phase === "bottom" ? 1 : 0,
+            //   y: phase === "bottom" ? 0 : 40,
+            //   rotate: phase === "bottom" ? 3 : 3,
+            // }}
+            transition={{ duration: 2, delay: 0.7, ease: "easeOut" }}
+          >
+            <Image
+              src="/aurora-borealis-landscape-cinematic.jpg"
+              alt="Aurora boreal"
+              className="w-full h-full object-cover"
+              width={100}
+              height={100}
+            />
+          </motion.div>
 
-        {/* Small floating card - bottom left */}
-        <motion.div
-          className="absolute left-8 md:left-24 bottom-1/4 w-40 md:w-52 rounded-xl overflow-hidden shadow-xl bg-card"
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, 100]) }}
-          initial={{ opacity: 0, y: 50 }}
-          // animate={{ opacity: 1, y: 0 }}
-          animate={{
-            opacity: phase === "bottom" ? 1 : 0,
-            y: phase === "bottom" ? 0 : 40,
-          }}
-          transition={{ duration: 2, delay: 0.9, ease: "easeOut" }}
-        >
-          <Image
-            src="/images/silueta.png"
-            alt="Músicos en desierto"
-            className="w-full aspect-video object-cover"
-            width={100}
-            height={100}
-          />
-          {/* <div className="p-3 flex items-center gap-2">
+          {/* Small floating card - bottom left */}
+          <motion.div
+            className="absolute left-8 md:left-24 bottom-1/4 w-40 md:w-52 rounded-xl overflow-hidden shadow-xl bg-card"
+            style={{ y: useTransform(scrollYProgress, [0, 1], [0, 50]) }}
+            initial={{ opacity: 0, y: 50 }}
+            // animate={{ opacity: 1, y: 0 }}
+            animate={{
+              opacity: phase === "bottom" ? 1 : 0,
+              y: phase === "bottom" ? 0 : 40,
+            }}
+            transition={{ duration: 2, delay: 0.9, ease: "easeOut" }}
+          >
+            <Image
+              src="/images/silueta.pn"
+              alt="Músicos en desierto"
+              className="w-full aspect-video object-cover"
+              width={100}
+              height={100}
+            />
+            {/* <div className="p-3 flex items-center gap-2">
             <span className="text-xs text-muted-foreground">Try click</span>
             <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none">
               <path
@@ -132,40 +140,40 @@ export default function AnimatedSilhouetteHero() {
               />
             </svg>
           </div> */}
-        </motion.div>
+          </motion.div>
 
-        <motion.div
-          className="absolute z-10"
-          initial={{
-            top: "50%",
-            left: "50%",
-            x: "-50%",
-            y: "-50%",
-            scale: 1.2,
-          }}
-          animate={{
-            top: phase === "center" ? "50%" : "75%",
-            y: phase === "center" ? "-50%" : "-50%",
-            scale: phase === "center" ? 1.2 : 0.7,
-          }}
-          transition={{
-            duration: 1.8,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          style={{
-            opacity: phase === "bottom" ? scrollOpacity : 1,
-            translateY: phase === "bottom" ? scrollTranslateY : 0,
-          }}
-        >
-          <Image
-            src="/images/silueta.png"
-            alt="Silueta de perfil"
-            width={500}
-            height={650}
-            className="w-72 md:w-96 lg:w-[450px] h-auto object-contain"
-            priority
-          />
-        </motion.div>
+          <motion.div
+            className="absolute z-10"
+            initial={{
+              top: "50%",
+              left: "50%",
+              x: "-50%",
+              y: "-50%",
+              scale: 1.2,
+            }}
+            animate={{
+              top: phase === "center" ? "50%" : "75%",
+              y: phase === "center" ? "-50%" : "-50%",
+              scale: phase === "center" ? 1.2 : 0.7,
+            }}
+            transition={{
+              duration: 1.8,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            style={{
+              opacity: phase === "bottom" ? scrollOpacity : 1,
+              translateY: phase === "bottom" ? scrollTranslateY : 0,
+            }}
+          >
+            <Image
+              src="/images/silueta.png"
+              alt="Silueta de perfil"
+              width={500}
+              height={650}
+              className="w-72 md:w-96 lg:w-[450px] h-auto object-contain"
+              priority
+            />
+          </motion.div>
 
         {/* Content that appears after silhouette moves */}
         {/* <motion.div
@@ -187,7 +195,7 @@ export default function AnimatedSilhouetteHero() {
 
         <motion.div
           style={{ opacity }}
-          className="relative z-10 max-w-4xl mx-auto px-6 text-center"
+          className="relative z-10 max-w-4xl mx-auto px-6 text-center "
         >
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
@@ -196,7 +204,7 @@ export default function AnimatedSilhouetteHero() {
               y: phase === "bottom" ? 0 : 40,
             }}
             transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-            className="text-5xl md:text-7xl lg:text-8xl font-sans font-medium tracking-tight text-foreground mb-8"
+            className="text-5xl md:text-7xl lg:text-8xl font-sans font-medium tracking-tight text-foreground mb-8 "
           >
             Hazlo{" "}
             <span className="relative inline-block w-[200px] md:w-[300px]">
@@ -207,7 +215,7 @@ export default function AnimatedSilhouetteHero() {
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   exit={{ opacity: 0, y: -20, filter: "blur(10px)" }}
                   transition={{ duration: 0.5 }}
-                  className="absolute left-0 -top-22 bg-linear-to-r from-luma-green via-luma-blue to-luma-orange bg-clip-text italic text-zinc-400"
+                  className="absolute left-0 -top-10 lg:-top-22 bg-linear-to-r from-luma-green via-luma-blue to-luma-orange bg-clip-text italic text-zinc-400"
                 >
                   {colorWords[currentWordIndex]}
                 </motion.span>

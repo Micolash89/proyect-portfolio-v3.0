@@ -1,13 +1,14 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
-import ProjectCard from "@/components/project-card"
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import ProjectCard from "@/components/project-card";
 
 const projects = [
   {
     title: "Proyecto 1: Portfolio Animado",
-    description: "Una app dinámica inspirada en sitios modernos con animaciones scroll avanzadas y efectos 3D.",
+    description:
+      "Una app dinámica inspirada en sitios modernos con animaciones scroll avanzadas y efectos 3D.",
     image: "/dark-minimal-website-with-animations.jpg",
     tags: ["Next.js", "Framer Motion", "TypeScript"],
     liveUrl: "#",
@@ -15,7 +16,8 @@ const projects = [
   },
   {
     title: "Proyecto 2: Dashboard Interactivo",
-    description: "Panel de administración con gráficos en tiempo real y transiciones fluidas entre vistas.",
+    description:
+      "Panel de administración con gráficos en tiempo real y transiciones fluidas entre vistas.",
     image: "/dark-dashboard-interface-with-charts.jpg",
     tags: ["React", "Tailwind CSS", "Chart.js"],
     liveUrl: "#",
@@ -23,7 +25,8 @@ const projects = [
   },
   {
     title: "Proyecto 3: E-commerce Moderno",
-    description: "Tienda online con carrito dinámico, filtros animados y experiencia de compra fluida.",
+    description:
+      "Tienda online con carrito dinámico, filtros animados y experiencia de compra fluida.",
     image: "/dark-ecommerce-website-minimal.jpg",
     tags: ["Next.js", "Stripe", "Prisma"],
     liveUrl: "#",
@@ -31,20 +34,25 @@ const projects = [
   },
   {
     title: "Proyecto 4: App de Productividad",
-    description: "Aplicación de gestión de tareas con drag and drop, notificaciones y sincronización en la nube.",
+    description:
+      "Aplicación de gestión de tareas con drag and drop, notificaciones y sincronización en la nube.",
     image: "/dark-productivity-app-interface.jpg",
     tags: ["TypeScript", "Node.js", "MongoDB"],
     liveUrl: "#",
     githubUrl: "#",
   },
-]
+];
 
 export default function Projects() {
-  const containerRef = useRef<HTMLElement>(null)
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" })
+  const containerRef = useRef<HTMLElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
   return (
-    <section ref={containerRef} id="proyectos" className="relative py-32 md:py-48 bg-card">
+    <section
+      ref={containerRef}
+      id="proyectos"
+      className="relative py-32 md:py-48 bg-card"
+    >
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center mb-16">
           <motion.span
@@ -73,5 +81,5 @@ export default function Projects() {
         </div>
       </div>
     </section>
-  )
+  );
 }

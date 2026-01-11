@@ -15,10 +15,10 @@ export default function Home() {
     <main className="relative">
       <AnimatedSilhouetteHero />
       <Navigation />
-      <Hero />
+      {/* <Hero /> */}
       {/* <IconSelector /> */}
       <Projects />
-      <Features />
+      {/* <Features /> */}
       <CinematicSection />
       <Ray3Section />
       <FreedomsSection />

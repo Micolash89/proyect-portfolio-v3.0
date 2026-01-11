@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { motion, useInView, useScroll, useTransform } from "framer-motion"
+import { useRef } from "react";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import {
   SiNextdotjs,
   SiTypescript,
@@ -11,32 +11,77 @@ import {
   SiNodedotjs,
   SiGit,
   SiVercel,
-} from "@icons-pack/react-simple-icons"
+  IconType,
+} from "@icons-pack/react-simple-icons";
 
-const technologies = [
-  { name: "Next.js", Icon: SiNextdotjs },
-  { name: "TypeScript", Icon: SiTypescript },
-  { name: "React", Icon: SiReact },
-  { name: "Tailwind CSS", Icon: SiTailwindcss },
-  { name: "Framer Motion", Icon: SiFramer },
-  { name: "Node.js", Icon: SiNodedotjs },
-  { name: "Git", Icon: SiGit },
-  { name: "Vercel", Icon: SiVercel },
-]
+export type Technology = {
+  name: string;
+  Icon: IconType;
+  positionClass: string;
+  imageSrc?: string;
+};
+
+export const technologies: Technology[] = [
+  {
+    name: "Next.js",
+    Icon: SiNextdotjs,
+    positionClass: "left-2 md:left-10 top-1/6",
+    imageSrc: "/images/tech/next.jpg",
+  },
+  {
+    name: "TypeScript",
+    Icon: SiTypescript,
+    positionClass: "right-2 md:right-10 top-1/5",
+  },
+  {
+    name: "React",
+    Icon: SiReact,
+    positionClass: "left-12 md:left-32 top-1/3",
+  },
+  {
+    name: "Tailwind CSS",
+    Icon: SiTailwindcss,
+    positionClass: "right-12 md:right-32 top-1/4",
+  },
+  {
+    name: "Framer Motion",
+    Icon: SiFramer,
+    positionClass: "left-20 md:left-40 top-1/2",
+  },
+  {
+    name: "Node.js",
+    Icon: SiNodedotjs,
+    positionClass: "right-20 md:right-40 top-2/5",
+  },
+  {
+    name: "Git",
+    Icon: SiGit,
+    positionClass: "left-32 md:left-56 top-3/5",
+  },
+  {
+    name: "Vercel",
+    Icon: SiVercel,
+    positionClass: "right-32 md:right-56 top-3/4",
+  },
+];
 
 export default function Technologies() {
-  const containerRef = useRef<HTMLElement>(null)
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" })
+  const containerRef = useRef<HTMLElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
-  })
+  });
 
-  const x = useTransform(scrollYProgress, [0, 1], [-100, 100])
+  const x = useTransform(scrollYProgress, [0, 1], [-100, 100]);
 
   return (
-    <section ref={containerRef} id="tecnologias" className="relative py-32 md:py-48 bg-background overflow-hidden">
+    <section
+      ref={containerRef}
+      id="tecnologias"
+      className="relative py-32 md:py-48 bg-background overflow-hidden"
+    >
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center mb-16">
           <motion.span
@@ -54,11 +99,15 @@ export default function Technologies() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground"
           >
-            Herramientas que <span className="text-muted-foreground">domino</span>
+            Herramientas que{" "}
+            <span className="text-muted-foreground">domino</span>
           </motion.h2>
         </div>
 
-        <motion.div style={{ x }} className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <motion.div
+          style={{ x }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6"
+        >
           {technologies.map((tech, index) => (
             <motion.div
               key={tech.name}
@@ -87,5 +136,5 @@ export default function Technologies() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

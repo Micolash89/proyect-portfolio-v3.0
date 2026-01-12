@@ -72,9 +72,9 @@ export default function ProjectCard({
           <Image
             src={image || "/placeholder.svg"}
             alt={title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            width={100}
-            height={200}
+            fill
+            sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-linear-to-t from-card to-transparent opacity-60" />
 
@@ -113,7 +113,7 @@ export default function ProjectCard({
           <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
             {description}
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-nowrap gap-2">
             {tags.map((tag) => (
               <span
                 key={tag}

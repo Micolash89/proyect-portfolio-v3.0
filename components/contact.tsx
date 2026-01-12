@@ -1,60 +1,58 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useRef, useState } from "react"
-import { motion, useInView } from "framer-motion"
-import { Send, Mail, Linkedin, Github, MapPin } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { toast } from "sonner"
-import axios from "axios"
+import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { Send, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
+import axios from "axios";
 
 export default function Contact() {
-  const containerRef = useRef<HTMLElement>(null)
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const containerRef = useRef<HTMLElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    const formData = new FormData(e.currentTarget)
+    const formData = new FormData(e.currentTarget);
     const data = {
       name: formData.get("name"),
       email: formData.get("email"),
       message: formData.get("message"),
-    }
+    };
 
     try {
       await axios.post("/api/contact", data).catch(() => {
-        return new Promise((resolve) => setTimeout(resolve, 1000))
-      })
+        return new Promise((resolve) => setTimeout(resolve, 1000));
+      });
 
       toast.success("¡Mensaje enviado!", {
         description: "Gracias por contactarme. Te responderé pronto.",
-      })
+      });
 
-      e.currentTarget.reset()
+      e.currentTarget.reset();
     } catch {
       toast.error("Error al enviar", {
         description: "Por favor intenta de nuevo más tarde.",
-      })
+      });
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
-
-  const socialLinks = [
-    { icon: Mail, label: "Email", href: "mailto:tu@email.com", value: "tu@email.com" },
-    { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/tunombre", value: "/in/tunombre" },
-    { icon: Github, label: "GitHub", href: "https://github.com/tunombre", value: "@tunombre" },
-  ]
+  };
 
   return (
-    <section ref={containerRef} id="contacto" className="relative py-32 md:py-48 bg-background">
+    <section
+      ref={containerRef}
+      id="contacto"
+      className="relative py-28 md:py-48 bg-linear-to-t from-zinc-900 to-background from-10%"
+    >
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left Column - Info */}
@@ -85,8 +83,9 @@ export default function Contact() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-lg text-muted-foreground leading-relaxed mb-8"
             >
-              ¿Tienes una idea en mente? Me encantaría escucharla. Estoy disponible para proyectos freelance,
-              colaboraciones y oportunidades de trabajo.
+              ¿Tienes una idea en mente? Me encantaría escucharla. Estoy
+              disponible para proyectos freelance, colaboraciones y
+              oportunidades de trabajo.
             </motion.p>
 
             <motion.div
@@ -99,7 +98,7 @@ export default function Contact() {
               <span>Madrid, España</span>
             </motion.div>
 
-            <div className="space-y-4">
+            {/* <div className="space-y-4">
               {socialLinks.map((link, index) => (
                 <motion.a
                   key={link.label}
@@ -122,7 +121,7 @@ export default function Contact() {
                   </div>
                 </motion.a>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Right Column - Form */}
@@ -184,7 +183,11 @@ export default function Contact() {
                   <span className="flex items-center gap-2">
                     <motion.span
                       animate={{ rotate: 360 }}
-                      transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                      transition={{
+                        duration: 1,
+                        repeat: Number.POSITIVE_INFINITY,
+                        ease: "linear",
+                      }}
                       className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full"
                     />
                     Enviando...
@@ -201,5 +204,5 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }

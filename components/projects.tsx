@@ -6,40 +6,109 @@ import ProjectCard from "@/components/project-card";
 
 const projects = [
   {
-    title: "Proyecto 1: Portfolio Animado",
-    description:
-      "Una app dinámica inspirada en sitios modernos con animaciones scroll avanzadas y efectos 3D.",
-    image: "/dark-minimal-website-with-animations.jpg",
-    tags: ["Next.js", "Framer Motion", "TypeScript"],
+    title: "Generador de Curriculum Vitae con IA",
+    description: "Proyecto personal - Frontend y Backend",
+    image: "/images/proyect-cv.jpg",
+    tags: [
+      "NextJS",
+      "TypeScript",
+      "TailwindCSS",
+      "Supabase",
+      "pnpm",
+      "HTML5",
+      "CSS3",
+      "VSCode",
+    ],
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/Micolash89/proyect-cv",
   },
   {
-    title: "Proyecto 2: Dashboard Interactivo",
-    description:
-      "Panel de administración con gráficos en tiempo real y transiciones fluidas entre vistas.",
-    image: "/dark-dashboard-interface-with-charts.jpg",
-    tags: ["React", "Tailwind CSS", "Chart.js"],
+    title: "Gestión de Inscripciones",
+    description: "sistema de gestión de inscripciones para práctica del acelerador del POLO IT",
+    image: "/images/gestion-estudiantes.jpg",
+    tags: [
+      "NextJS",
+      "TypeScript",
+      "TailwindCSS",
+      "PostgreSQL",
+      "pnpm",
+      "HTML5",
+      "CSS3",
+      "VSCode",
+    ],
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/gabito1966/mvp_poloit",
   },
   {
-    title: "Proyecto 3: E-commerce Moderno",
-    description:
-      "Tienda online con carrito dinámico, filtros animados y experiencia de compra fluida.",
-    image: "/dark-ecommerce-website-minimal.jpg",
-    tags: ["Next.js", "Stripe", "Prisma"],
+    title: "Crud Page",
+    description: "Crud Page - Frontend y Backend - proyecto integrador full stack NodeJs",
+    image: "/images/U7GKDnI.jpeg",
+    tags: [
+      "React",
+      "Vite",
+      "NodeJS",
+      "Express",
+      "MySQL",
+      "npm",
+      "HTML5",
+      "CSS3",
+      "VSCode",
+    ],
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/Micolash89/crud-page",
   },
   {
-    title: "Proyecto 4: App de Productividad",
-    description:
-      "Aplicación de gestión de tareas con drag and drop, notificaciones y sincronización en la nube.",
-    image: "/dark-productivity-app-interface.jpg",
-    tags: ["TypeScript", "Node.js", "MongoDB"],
+    title: "E-commerce",
+    description: "E-commerce Page - Frontend y Backend - proyecto personal",
+    image: "/images/e-commerce.jpg",
+    tags: [
+      "React",
+      "Vite",
+      "NodeJS",
+      "Express",
+      "MongoDB",
+      "npm",
+      "HTML5",
+      "CSS3",
+      "VSCode",
+    ],
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/Micolash89/e-commerce-Coder-FrontEnd",
+  },
+  {
+    title: "Porfolio",
+    description: "proyecto integrador curso de Educacion IT - Frond End React",
+    image: "/images/educacion-it-proyecto-integrador2.jpg",
+    tags: ["React", "Vite", "HTML5", "CSS3", "VSCode"],
+    liveUrl: "#",
+    githubUrl: "https://github.com/Micolash89/Javier-Espindola-entrega03",
+  },
+  {
+    title: "Biblioteca Wep App",
+    description: "Proyecto integrador - Argentina Programa, Egg Cooperation",
+    image: "/images/proyecto-integrador-Sprint-Egg-Cooperation-.jpg",
+    tags: [
+      "Java",
+      "MySQL",
+      "Spring Boot",
+      "Maven",
+      "Hibernate",
+      "HTML5",
+      "CSS3",
+      "NetBeans",
+    ],
+    liveUrl: "#",
+    githubUrl:
+      "https://github.com/Micolash89/proyecto-bilioteca-egg-sprint-boot",
+  },
+  {
+    title: "Creacion de una splash Screen",
+    description: "Curso introducción a android - Fundación Telefónica Movistar",
+    image: "/images/android-screen-splash.jpg",
+    tags: ["Kotlin", "Android Studio"],
+    liveUrl: "#",
+    githubUrl:
+      "https://github.com/Micolash89/Modulo-3-Creacion-de-una-splash-screen-en-android/tree/master",
   },
 ];
 
@@ -74,7 +143,7 @@ export default function Projects() {
           </motion.h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <ProjectCard key={project.title} {...project} index={index} />
           ))}

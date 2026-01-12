@@ -12,7 +12,33 @@ import {
 import Image from "next/image";
 import { technologies } from "./technologies";
 //palabras que referentes a guts de berserk
-const colorWords = [ "programador","estudiante" ,"código", "diseño", "ideas", "proyectos", "sueños", "innovación", "tecnología", "futuro", "resiliente", "creativo", "apasionado", "visionario", "líder", "colaborador" ,"solucionador", "adaptable", "curioso", "detallista", "estratégico" ,"proactivo", "comunicativo", "organizado", "eficiente" ];
+const colorWords = [
+  "programador",
+  "estudiante",
+  "código",
+  "diseño",
+  "ideas",
+  "proyectos",
+  "sueños",
+  "innovación",
+  "tecnología",
+  "futuro",
+  "resiliente",
+  "creativo",
+  "apasionado",
+  "visionario",
+  "líder",
+  "colaborador",
+  "solucionador",
+  "adaptable",
+  "curioso",
+  "detallista",
+  "estratégico",
+  "proactivo",
+  "comunicativo",
+  "organizado",
+  "eficiente",
+];
 
 export default function AnimatedSilhouetteHero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -208,8 +234,17 @@ export default function AnimatedSilhouetteHero() {
           style={{ opacity }}
           className="relative z-10 max-w-4xl mx-auto px-6 text-center "
         >
-          
-
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{
+              opacity: phase === "bottom" ? 1 : 0,
+              y: phase === "bottom" ? 0 : 40,
+            }}
+            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+            className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto mb-6 leading-relaxed"
+          >
+            Full Stack Developer
+          </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{
@@ -220,19 +255,7 @@ export default function AnimatedSilhouetteHero() {
             className="text-5xl md:text-7xl lg:text-8xl font-sans font-medium tracking-tight text-foreground mb-8 "
           >
             Espindola Javier
-            
           </motion.h1>
-          {/* <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{
-              opacity: phase === "bottom" ? 1 : 0,
-              y: phase === "bottom" ? 0 : 40,
-            }}
-            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-            className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto mb-6 leading-relaxed"
-          >
-            Full Stack Developer
-          </motion.p> */}
 
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
@@ -259,8 +282,6 @@ export default function AnimatedSilhouetteHero() {
               </AnimatePresence>
             </span>
           </motion.h2>
-
-          
         </motion.div>
       </section>
     </div>

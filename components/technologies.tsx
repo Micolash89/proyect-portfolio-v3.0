@@ -23,7 +23,7 @@ import {
   SiMysql,
   SiPrisma,
   SiPostman,
-  SiEslint,
+  SiPython,
   SiGithub,
   IconType,
 } from "@icons-pack/react-simple-icons";
@@ -137,19 +137,16 @@ export const technologies: Technology[] = [
     Icon: SiPostman,
     positionClass: "right-72 md:right-128 top-2/3",
   },
-
-  {
-    name: "ESLint",
-    Icon: SiEslint,
-    positionClass: "right-80 md:right-144 top-1/2",
-  },
-
   {
     name: "GitHub",
     Icon: SiGithub,
     positionClass: "left-80 md:left-144 top-1/2",
   },
-
+  {
+    name: "Python",
+    Icon: SiPython,
+    positionClass: "right-80 md:right-144 top-1/2",
+  },
 ];
 
 export default function Technologies() {
@@ -193,7 +190,7 @@ export default function Technologies() {
 
         <motion.div
           style={{ x }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6"
+          className="grid grid-cols-4 md:grid-cols-7 gap-2 md:gap-6"
         >
           {technologies.map((tech, index) => (
             <motion.div
@@ -206,15 +203,15 @@ export default function Technologies() {
                 rotateY: 10,
                 transition: { duration: 0.2 },
               }}
-              className="group relative p-8 bg-card rounded-2xl border border-border/50 hover:border-border transition-all duration-300"
+              className="group relative p-2 md:p-8 bg-card rounded-2xl border border-border/50 hover:border-border transition-all duration-300"
               style={{ perspective: 1000 }}
             >
               <div className="flex flex-col items-center gap-4">
                 <tech.Icon
                   size={48}
-                  className="text-muted-foreground group-hover:text-foreground transition-colors duration-300"
+                  className=" text-muted-foreground group-hover:text-foreground transition-colors duration-300"
                 />
-                <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                <span className="text-xs md:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">
                   {tech.name}
                 </span>
               </div>

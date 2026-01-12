@@ -1,39 +1,65 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 // import LumaLogo from "@/components/luma-logo"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 const navItems = [
   { href: "#join", label: "Únete" },
   { href: "#photon", label: "Photon" },
   { href: "#ray3", label: "Ray3" },
-]
+];
 
 export default function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isDarkSection, setIsDarkSection] = useState(false)
+  // const [isScrolled, setIsScrolled] = useState(false);
+  // const [isDarkSection, setIsDarkSection] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-      const cinematicSection = document.getElementById("cinematic")
-      const ray3Section = document.getElementById("ray3")
-      if (cinematicSection && ray3Section) {
-        const cinematicRect = cinematicSection.getBoundingClientRect()
-        const ray3Rect = ray3Section.getBoundingClientRect()
-        setIsDarkSection(
-          (cinematicRect.top < 100 && cinematicRect.bottom > 100) || (ray3Rect.top < 100 && ray3Rect.bottom > 100),
-        )
-      }
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setIsScrolled(window.scrollY > 50);
+  //     const cinematicSection = document.getElementById("cinematic");
+  //     const ray3Section = document.getElementById("ray3");
+  //     if (cinematicSection && ray3Section) {
+  //       const cinematicRect = cinematicSection.getBoundingClientRect();
+  //       const ray3Rect = ray3Section.getBoundingClientRect();
+  //       setIsDarkSection(
+  //         (cinematicRect.top < 100 && cinematicRect.bottom > 100) ||
+  //           (ray3Rect.top < 100 && ray3Rect.bottom > 100)
+  //       );
+  //     }
+  //   };
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
+
+  const pathname = usePathname();
+  // const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const handleClick = (href: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+    const id = href.replace("#", "");
+    router.push(`${pathname}#${id}`);
+  };
+
+  // useEffect(() => {
+  //   // Cuando cambia la ruta/query, si hay hash en la URL hacemos scroll suave
+  //   if (typeof window === "undefined") return;
+  //   const hash = window.location.hash;
+  //   if (!hash) return;
+  //   const id = hash.replace("#", "");
+  //   const el = document.getElementById(id);
+  //   if (el) {
+  //     el.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // }, [pathname, searchParams]);
 
   return (
     <>
@@ -42,9 +68,9 @@ export default function Navigation() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-          isScrolled ? "backdrop-blur-xl" : "bg-transparent",
-          isDarkSection ? "text-white" : "text-foreground",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+          // isScrolled ? "backdrop-blur-xl" : "bg-transparent",
+          // isDarkSection ? "text-white" : "text-foreground"
         )}
       >
         <nav className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
@@ -66,33 +92,29 @@ export default function Navigation() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
               >
-                <a
+                <Link
                   href={item.href}
+                  scroll={false}
+                  prefetch={false}
+                  onClick={handleClick(item.href)}
                   className={cn(
-                    "text-sm transition-colors duration-300 relative group",
-                    isDarkSection ? "text-white/70 hover:text-white" : "text-muted-foreground hover:text-foreground",
+                    "text-sm transition-colors duration-300 relative group"
                   )}
                 >
                   {item.label}
-                </a>
+                </Link>
               </motion.li>
             ))}
-            <motion.li
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
+            <Link
+              href="#footer"
+              replace={false}
+              scroll={false}
+              prefetch={false}
+              onClick={handleClick("#footer")}
+              className="text-2xl font-medium text-foreground hover:text-accent transition-colors"
             >
-              <Button
-                className={cn(
-                  "rounded-full px-6 transition-all duration-300",
-                  isDarkSection
-                    ? "bg-white/90 text-black hover:bg-white"
-                    : "bg-foreground text-background hover:bg-foreground/90",
-                )}
-              >
-                Probar Ahora
-              </Button>
-            </motion.li>
+              Contacto
+            </Link>
           </ul>
 
           {/* Mobile Menu Button */}
@@ -123,23 +145,30 @@ export default function Navigation() {
               className="flex flex-col items-center justify-center h-full gap-8"
             >
               {navItems.map((item, index) => (
-                <motion.a
+                <motion.div
                   key={item.href}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 + index * 0.1 }}
-                  className="text-2xl font-medium text-foreground hover:text-accent transition-colors"
                 >
-                  {item.label}
-                </motion.a>
+                  <Link
+                    href={item.href}
+                    scroll={false}
+                    prefetch={false}
+                    onClick={handleClick(item.href)}
+                    className="text-2xl font-medium text-foreground hover:text-accent transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
               ))}
-              <Button className="rounded-full px-8 bg-foreground text-background">Probar Ahora</Button>
+              <Button className="rounded-full px-8 bg-foreground text-background">
+                Probar Ahora
+              </Button>
             </motion.nav>
           </motion.div>
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }

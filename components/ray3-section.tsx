@@ -13,7 +13,7 @@ const ray3Features = [
 export default function Ray3Section() {
   const containerRef = useRef<HTMLElement>(null)
   const isInView = useInView(containerRef, { once: true, margin: "-100px" })
-  const [sliderPosition, setSliderPosition] = useState(50)
+  // const [sliderPosition, setSliderPosition] = useState(50)
 
   return (
     <section ref={containerRef} id="ray3" className="relative py-24 md:py-32 bg-dark-bg text-dark-fg overflow-hidden">

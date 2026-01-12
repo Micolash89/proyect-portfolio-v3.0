@@ -1,5 +1,6 @@
 "use client";
 
+import { Temporal } from "@js-temporal/polyfill";
 import { motion, useInView } from "framer-motion";
 // import LumaLogo from "@/components/luma-logo"
 import {  Mail, Linkedin, Github } from "lucide-react";
@@ -45,7 +46,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* <LumaLogo className="h-10" /> */}
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Espindola Javier. Todos los derechos
+            © {Temporal.Now.plainDateISO().year} Espindola Javier. Todos los derechos
             reservados.
           </p>
           <div className="flex items-center gap-6">

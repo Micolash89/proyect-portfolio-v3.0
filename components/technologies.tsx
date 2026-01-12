@@ -11,6 +11,20 @@ import {
   SiNodedotjs,
   SiGit,
   SiVercel,
+  SiJavascript,
+  SiHtml5,
+  SiCss,
+  SiSpring,
+  SiMongodb,
+  SiPostgresql,
+  SiSupabase,
+  SiPnpm,
+  SiExpress,
+  SiMysql,
+  SiPrisma,
+  SiPostman,
+  SiEslint,
+  SiGithub,
   IconType,
 } from "@icons-pack/react-simple-icons";
 
@@ -63,6 +77,79 @@ export const technologies: Technology[] = [
     Icon: SiVercel,
     positionClass: "right-32 md:right-56 top-3/4",
   },
+  {
+    name: "JavaScript",
+    Icon: SiJavascript,
+    positionClass: "left-10 md:left-24 top-2/3",
+  },
+  {
+    name: "HTML5",
+    Icon: SiHtml5,
+    positionClass: "right-10 md:right-24 top-2/3",
+  },
+  {
+    name: "CSS3",
+    Icon: SiCss,
+    positionClass: "left-24 md:left-48 top-4/5",
+  },
+  {
+    name: "Spring",
+    Icon: SiSpring,
+    positionClass: "right-24 md:right-48 top-4/5",
+  },
+  {
+    name: "MongoDB",
+    Icon: SiMongodb,
+    positionClass: "left-40 md:left-72 top-5/6",
+  },
+  {
+    name: "PostgreSQL",
+    Icon: SiPostgresql,
+    positionClass: "right-40 md:right-72 top-5/6",
+  },
+  {
+    name: "Supabase",
+    Icon: SiSupabase,
+    positionClass: "left-52 md:left-96 top-11/12",
+  },
+  {
+    name: "pnpm",
+    Icon: SiPnpm,
+    positionClass: "right-52 md:right-96 top-11/12",
+  },
+  {
+    name: "Express.js",
+    Icon: SiExpress,
+    positionClass: "left-64 md:left-112 top-3/4",
+  },
+  {
+    name: "MySQL",
+    Icon: SiMysql,
+    positionClass: "right-64 md:right-112 top-3/4",
+  },
+  {
+    name: "Prisma",
+    Icon: SiPrisma,
+    positionClass: "left-72 md:left-128 top-2/3",
+  },
+  {
+    name: "Postman",
+    Icon: SiPostman,
+    positionClass: "right-72 md:right-128 top-2/3",
+  },
+
+  {
+    name: "ESLint",
+    Icon: SiEslint,
+    positionClass: "right-80 md:right-144 top-1/2",
+  },
+
+  {
+    name: "GitHub",
+    Icon: SiGithub,
+    positionClass: "left-80 md:left-144 top-1/2",
+  },
+
 ];
 
 export default function Technologies() {

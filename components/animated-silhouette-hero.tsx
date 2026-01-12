@@ -10,9 +10,9 @@ import {
   useInView,
 } from "framer-motion";
 import Image from "next/image";
-import { technologies, Technology } from "./technologies";
-
-const colorWords = ["real", "posible", "mágico", "tuyo", "único"];
+import { technologies } from "./technologies";
+//palabras que referentes a guts de berserk
+const colorWords = [ "programador","estudiante" ,"código", "diseño", "ideas", "proyectos", "sueños", "innovación", "tecnología", "futuro", "resiliente", "creativo", "apasionado", "visionario", "líder", "colaborador" ,"solucionador", "adaptable", "curioso", "detallista", "estratégico" ,"proactivo", "comunicativo", "organizado", "eficiente" ];
 
 export default function AnimatedSilhouetteHero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -28,7 +28,6 @@ export default function AnimatedSilhouetteHero() {
   const { scrollY } = useScroll();
 
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const x = useTransform(scrollYProgress, [0, 1], [-100, 100]);
 
   const smoothScrollY = useSpring(scrollY, {
     stiffness: 80,
@@ -92,7 +91,7 @@ export default function AnimatedSilhouetteHero() {
         {technologies.map((tech, index) => (
           <motion.div
             key={tech.name}
-            className={`absolute size-25 rounded-2xl overflow-hidden shadow-2xl ${tech.positionClass}`}
+            className={`absolute size-15 rounded-2xl overflow-hidden shadow-2xl ${tech.positionClass}`}
             initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40, scale: 0.8 }}
             animate={
               isInView
@@ -103,7 +102,7 @@ export default function AnimatedSilhouetteHero() {
             style={{ y }} // un único MotionValue para todos
           >
             <div className="flex items-center justify-center w-full h-full bg-card">
-              <tech.Icon size={80} className="text-muted-foreground" />
+              <tech.Icon size={40} className="text-muted-foreground" />
             </div>
           </motion.div>
         ))}
@@ -209,6 +208,8 @@ export default function AnimatedSilhouetteHero() {
           style={{ opacity }}
           className="relative z-10 max-w-4xl mx-auto px-6 text-center "
         >
+          
+
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{
@@ -218,24 +219,10 @@ export default function AnimatedSilhouetteHero() {
             transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
             className="text-5xl md:text-7xl lg:text-8xl font-sans font-medium tracking-tight text-foreground mb-8 "
           >
-            Hazlo{" "}
-            <span className="relative inline-block w-[200px] md:w-[300px]">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={currentWordIndex}
-                  initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, y: -20, filter: "blur(10px)" }}
-                  transition={{ duration: 0.5 }}
-                  className="absolute left-0 -top-10 lg:-top-22 bg-linear-to-r from-luma-green via-luma-blue to-luma-orange bg-clip-text italic text-zinc-400"
-                >
-                  {colorWords[currentWordIndex]}
-                </motion.span>
-              </AnimatePresence>
-            </span>
+            Espindola Javier
+            
           </motion.h1>
-
-          <motion.p
+          {/* <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{
               opacity: phase === "bottom" ? 1 : 0,
@@ -244,9 +231,36 @@ export default function AnimatedSilhouetteHero() {
             transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
             className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto mb-6 leading-relaxed"
           >
-            Un nuevo medio fluido para crear imágenes y videos impresionantes
-            que parecen de otro mundo. Todo lo que necesitas es preguntar.
-          </motion.p>
+            Full Stack Developer
+          </motion.p> */}
+
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            animate={{
+              opacity: phase === "bottom" ? 1 : 0,
+              y: phase === "bottom" ? 0 : 40,
+            }}
+            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+            className="text-4xl md:text-5xl lg:text-6xl font-sans font-medium tracking-tight text-foreground mb-8 w-full md:ml-10 text-center"
+          >
+            Soy{" "}
+            <span className="relative inline-block w-[200px] md:w-[300px] text-center">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentWordIndex}
+                  initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -20, filter: "blur(10px)" }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute left-0 -top-10 lg:-top-13 bg-linear-to-r from-luma-green via-luma-blue to-luma-orange bg-clip-text italic text-zinc-400"
+                >
+                  {colorWords[currentWordIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
+          </motion.h2>
+
+          
         </motion.div>
       </section>
     </div>

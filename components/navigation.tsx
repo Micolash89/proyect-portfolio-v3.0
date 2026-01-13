@@ -10,9 +10,9 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 const navItems = [
-  { href: "#join", label: "Únete" },
-  { href: "#photon", label: "Photon" },
-  { href: "#ray3", label: "Ray3" },
+  { href: "#Home", label: "inicio" },
+  { href: "#proyectos", label: "Proyectos" },
+  { href: "#contacto", label: "Contacto" },
 ];
 
 export default function Navigation() {
@@ -68,12 +68,29 @@ export default function Navigation() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-xl flex justify-between px-6 py-4"
           // isScrolled ? "backdrop-blur-xl" : "bg-transparent",
           // isDarkSection ? "text-white" : "text-foreground"
         )}
       >
-        <nav className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+
+           <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 +  0.1 }}
+                >
+                  <Link
+                    href={"#Home"}
+                    scroll={false}
+                    prefetch={false}
+                    onClick={handleClick("#Home")}
+                    className="w-fit text-2xl font-medium text-foreground hover:text-accent transition-colors capitalize"
+                  >
+                    espindola javier
+                  </Link>
+                </motion.div>
+
+        <nav className=" max-w-7xl  flex items-center justify-between">
           <motion.a
             href="#"
             className="flex items-center gap-2"
@@ -98,14 +115,14 @@ export default function Navigation() {
                   prefetch={false}
                   onClick={handleClick(item.href)}
                   className={cn(
-                    "text-sm transition-colors duration-300 relative group"
+                    "text-sm transition-colors duration-300 relative group capitalize hover:text-accent",
                   )}
                 >
                   {item.label}
                 </Link>
               </motion.li>
             ))}
-            <Link
+            {/* <Link
               href="#footer"
               replace={false}
               scroll={false}
@@ -114,7 +131,7 @@ export default function Navigation() {
               className="text-2xl font-medium text-foreground hover:text-accent transition-colors"
             >
               Contacto
-            </Link>
+            </Link> */}
           </ul>
 
           {/* Mobile Menu Button */}
@@ -137,6 +154,8 @@ export default function Navigation() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl md:hidden"
           >
+          
+
             <motion.nav
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}

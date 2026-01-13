@@ -15,20 +15,20 @@ export default function Footer() {
     {
       icon: Mail,
       label: "Email",
-      href: "mailto:tu@email.com",
-      value: "tu@email.com",
+      href: "mailto:espindolajavier2013@gmail.com",
+      value: "espindolajavier2013@gmail.com",
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/tunombre",
-      value: "/in/tunombre",
+      href: "https://linkedin.com/in/javier-espindola/",
+      value: "javier Espindola",
     },
     {
       icon: Github,
       label: "GitHub",
-      href: "https://github.com/tunombre",
-      value: "@tunombre",
+      href: "https://github.com/Micolash89",
+      value: "@Micolash89",
     },
   ];
 

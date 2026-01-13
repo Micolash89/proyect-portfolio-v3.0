@@ -101,15 +101,15 @@ const projects = [
     githubUrl:
       "https://github.com/Micolash89/proyecto-bilioteca-egg-sprint-boot",
   },
-  {
-    title: "Creacion de una splash Screen",
-    description: "Curso introducción a android - Fundación Telefónica Movistar",
-    image: "/images/android-screen-splash.jpg",
-    tags: ["Kotlin", "Android Studio"],
-    liveUrl: "#",
-    githubUrl:
-      "https://github.com/Micolash89/Modulo-3-Creacion-de-una-splash-screen-en-android/tree/master",
-  },
+  // {
+  //   title: "Creacion de una splash Screen",
+  //   description: "Curso introducción a android - Fundación Telefónica Movistar",
+  //   image: "/images/android-screen-splash.jpg",
+  //   tags: ["Kotlin", "Android Studio"],
+  //   liveUrl: "#",
+  //   githubUrl:
+  //     "https://github.com/Micolash89/Modulo-3-Creacion-de-una-splash-screen-en-android/tree/master",
+  // },
 ];
 
 export default function Projects() {

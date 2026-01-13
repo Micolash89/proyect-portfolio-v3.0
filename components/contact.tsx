@@ -95,7 +95,7 @@ export default function Contact() {
               className="flex items-center gap-3 text-muted-foreground mb-8"
             >
               <MapPin size={18} className="text-luma-green" />
-              <span>Madrid, España</span>
+              <span>Buenos Aires, Argentina</span>
             </motion.div>
 
             {/* <div className="space-y-4">
@@ -177,7 +177,7 @@ export default function Contact() {
                 type="submit"
                 size="lg"
                 disabled={isSubmitting}
-                className="w-full bg-foreground text-background hover:bg-foreground/90 rounded-full transition-all duration-300"
+                className="w-full bg-foreground text-background hover:bg-foreground/90 rounded-full transition-all duration-30 hover:cursor-pointer"
               >
                 {isSubmitting ? (
                   <span className="flex items-center gap-2">

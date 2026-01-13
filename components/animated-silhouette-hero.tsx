@@ -53,6 +53,11 @@ export default function AnimatedSilhouetteHero() {
 
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
 
+  // Transform para los badges de tecnologías: calcular una vez
+  // (evita llamar a `useTransform` dentro del callback del `map`)
+  // const techY = (index=50) =>
+  //    {return useTransform(scrollYProgress, [0, 1], [0, index]);}
+
   const smoothScrollY = useSpring(scrollY, {
     stiffness: 80,
     damping: 20,
@@ -115,15 +120,19 @@ export default function AnimatedSilhouetteHero() {
         {technologies.map((tech, index) => (
           <motion.div
             key={tech.name}
-            className={`absolute size-15 rounded-2xl overflow-hidden shadow-2xl ${tech.positionClass}`}
+            className={`absolute size-15 rounded-2xl overflow-hidden shadow-xl ${tech.positionClass}`}
+
+            style={{ y }}
+
             initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40, scale: 0.8 }}
+            
             animate={
               isInView
                 ? { opacity: phase === "bottom" ? 1 : 0, x: 0, scale: 1 }
                 : {}
             }
             transition={{ duration: 0.8, delay: index * 0.12, ease: "easeOut" }}
-            style={{ y }} // un único MotionValue para todos
+            // style={{ y }} // un único MotionValue para todos
           >
             <div className="flex items-center justify-center w-full h-full bg-card">
               <tech.Icon size={40} className="text-muted-foreground" />

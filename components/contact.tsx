@@ -97,34 +97,8 @@ export default function Contact() {
               <MapPin size={18} className="text-luma-green" />
               <span>Buenos Aires, Argentina</span>
             </motion.div>
-
-            {/* <div className="space-y-4">
-              {socialLinks.map((link, index) => (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  target={link.label !== "Email" ? "_blank" : undefined}
-                  rel={link.label !== "Email" ? "noopener noreferrer" : undefined}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-card border border-border/50 hover:border-luma-green/50 transition-all duration-300 group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center group-hover:bg-luma-green/10 transition-colors duration-300">
-                    <link.icon className="w-5 h-5 text-foreground group-hover:text-luma-green transition-colors duration-300" />
-                  </div>
-                  <div>
-                    <span className="block text-sm text-muted-foreground">{link.label}</span>
-                    <span className="text-foreground group-hover:text-luma-green transition-colors duration-300">
-                      {link.value}
-                    </span>
-                  </div>
-                </motion.a>
-              ))}
-            </div> */}
           </div>
 
-          {/* Right Column - Form */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}

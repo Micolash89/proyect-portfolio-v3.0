@@ -43,13 +43,13 @@ export default function Footer() {
       id="footer"
     >
       <div className="mx-auto max-w-7xl px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           {/* <LumaLogo className="h-10" /> */}
           <p className="text-sm text-muted-foreground">
             © {Temporal.Now.plainDateISO().year} Espindola Javier. Todos los derechos
             reservados.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 md:flex-row flex-col">
             {socialLinks.length > 0 &&
               socialLinks.map((link, index) => (
                 <motion.a

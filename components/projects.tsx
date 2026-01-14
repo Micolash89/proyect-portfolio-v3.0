@@ -77,7 +77,7 @@ const projects = [
   },
   {
     title: "Porfolio",
-    description: "proyecto integrador curso de Educacion IT - Frond End React",
+    description: "proyecto integrador - curso de Educacion IT - Frond End React",
     image: "/images/educacion-it-proyecto-integrador2.jpg",
     tags: ["React", "Vite", "HTML5", "CSS3", "VSCode"],
     liveUrl: "#",
@@ -130,16 +130,16 @@ export default function Projects() {
             transition={{ duration: 0.6 }}
             className="text-sm text-muted-foreground uppercase tracking-[0.3em] mb-4 block"
           >
-            Proyectos
+            portfolio
           </motion.span>
 
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground capitalize"
           >
-            Trabajo <span className="text-muted-foreground">Seleccionado</span>
+            proyectos <span className="text-muted-foreground">destacados</span>
           </motion.h2>
         </div>
 

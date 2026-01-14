@@ -21,7 +21,7 @@ export default function Home() {
       {/* <Features /> */}
       {/* <CinematicSection /> */}
       <Ray3Section />
-      <FreedomsSection />
+      {/* <FreedomsSection /> */}
       <Technologies />
       <Contact />
       <Footer />

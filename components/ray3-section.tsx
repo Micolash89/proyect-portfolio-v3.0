@@ -97,28 +97,11 @@ export default function Ray3Section() {
               </div> */}
 
               <p className="text-sm/10 text-dark-muted leading-relaxed mb-8 max-w-md text-balance ">
-                <span className="text-dark-fg font-semibold">Ray3</span> es un
-                modelo de video inteligente diseñado para contar historias. Ray3
-                es capaz de pensar y razonar en visuales y ofrece física y
-                consistencia de última generación. En una primicia mundial, Ray3
-                genera videos en color de Alto Rango Dinámico de 16 bits,
-                llevando video generativo a pipelines de estudio profesional.
+                Soy un <span className="text-dark-fg font-semibold">desarrollador full stack</span> apasionado por crear experiencias digitales que resuelven problemas reales. Actualmente cursando<span className="text-dark-fg font-semibold"> Ingeniería en Informática</span>, me especializo en construir soluciones escalables y centradas en el usuario, desde interfaces intuitivas hasta sistemas backend robustos. Mi trayectoria incluye proyectos innovadores con inteligencia artificial y sistemas de gestión desarrollados en equipos multidisciplinarios. Lo que más me motiva es transformar ideas en productos de alto impacto, aplicando buenas prácticas y aprendiendo continuamente para llevar cada proyecto al siguiente nivel.
               </p>
             </motion.div>
           </div>
         </div>
-
-        {/* Big Luma text */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="mt-24"
-        >
-          <h3 className="text-7xl md:text-9xl lg:text-[12rem] font-serif text-white/90 leading-none">
-            Luma
-          </h3>
-        </motion.div> */}
       </div>
     </section>
   );

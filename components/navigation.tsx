@@ -34,14 +34,13 @@ export default function Navigation() {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-xl flex justify-between px-3 md:px-6 py-4"
-          // isScrolled ? "backdrop-blur-xl" : "bg-transparent",
-          // isDarkSection ? "text-white" : "text-foreground"
         )}
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 + 0.1 }}
+          className="flex items-center justify-center"
         >
           <Link
             href={"#Home"}
@@ -60,11 +59,8 @@ export default function Navigation() {
             className="flex items-center gap-2"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-          >
-            {/* <LumaLogo className="h-8" isDark={isDarkSection} /> */}
-          </motion.a>
+          ></motion.a>
 
-          {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center gap-8">
             {navItems.map((item, index) => (
               <motion.li
@@ -88,7 +84,6 @@ export default function Navigation() {
             ))}
           </ul>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden p-2"
@@ -125,7 +120,7 @@ export default function Navigation() {
                     scroll={false}
                     prefetch={false}
                     onClick={handleClick(item.href)}
-                    className="text-2xl font-medium text-foreground hover:text-accent transition-colors"
+                    className="text-2xl font-medium text-foreground hover:text-accent transition-colors capitalize"
                   >
                     {item.label}
                   </Link>

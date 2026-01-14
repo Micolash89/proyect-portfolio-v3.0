@@ -19,7 +19,7 @@ export default function Home() {
       {/* <IconSelector /> */}
       <Projects />
       {/* <Features /> */}
-      <CinematicSection />
+      {/* <CinematicSection /> */}
       <Ray3Section />
       <FreedomsSection />
       <Technologies />

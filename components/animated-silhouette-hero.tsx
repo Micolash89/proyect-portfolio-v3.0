@@ -82,7 +82,7 @@ export default function AnimatedSilhouetteHero() {
           {technologies.map((tech, index) => (
             <motion.div
               key={tech.name}
-              className={`absolute size-15 rounded-2xl overflow-hidden shadow-xl ${tech.positionClass}`}
+              className={`absolute size-15 rounded-2xl overflow-hidden shadow-2xl ${tech.positionClass}`}
               style={{ y }}
               initial={{ opacity: 0, x: 0, scale: 0.8 }}
               animate={{

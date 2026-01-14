@@ -10,6 +10,7 @@ import { usePathname, useRouter } from "next/navigation";
 const navItems = [
   { href: "#Home", label: "inicio" },
   { href: "#proyectos", label: "Proyectos" },
+  { href: "#aboutme", label: "acerca de mí" },
   { href: "#contacto", label: "Contacto" },
 ];
 
@@ -85,16 +86,6 @@ export default function Navigation() {
                 </Link>
               </motion.li>
             ))}
-            {/* <Link
-              href="#footer"
-              replace={false}
-              scroll={false}
-              prefetch={false}
-              onClick={handleClick("#footer")}
-              className="text-2xl font-medium text-foreground hover:text-accent transition-colors"
-            >
-              Contacto
-            </Link> */}
           </ul>
 
           {/* Mobile Menu Button */}

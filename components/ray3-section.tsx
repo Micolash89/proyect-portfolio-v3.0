@@ -1,15 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
-
-const ray3Features = [
-  { title: "Seguimiento de Instrucciones", description: "Adherente" },
-  { title: "Alta Fidelidad", description: "Matices y Detalles" },
-  { title: "Física Avanzada", description: "Y Simulaciones" },
-  { title: "Interactividad de Luz", description: "Y Reflejos" },
-];
 
 export default function Ray3Section() {
   const containerRef = useRef<HTMLElement>(null);
@@ -20,7 +13,7 @@ export default function Ray3Section() {
     <section
       ref={containerRef}
       id="aboutme"
-      className="relative pb-24 pt-0 sm:py-36 bg-dark-bg text-dark-fg overflow-hidden "
+      className="relative pb-24 pt-0 sm:pb-36 sm:pt-0 bg-dark-bg text-dark-fg overflow-hidden "
     >
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid sm:grid-cols-2 gap-12 lg:gap-24 items-center">
@@ -42,13 +35,12 @@ export default function Ray3Section() {
                 </div>
               </div> */}
 
-
               {/* Comparison slider */}
               <motion.div
-                className="relative w-full max-w-xl aspect-video h-[500] lg:w-auto lg:h-auto  overflow-hidden  "
+                className="relative w-full max-w-xl aspect-video h-[500] lg:w-auto lg:h-[700]  overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
               >
                 <Image
                   src="/images/silueta3.png"
@@ -59,7 +51,6 @@ export default function Ray3Section() {
                   // className="w-72 md:w-96 lg:w-[450px] h-auto object-contain brightness-75 "
                   priority
                 />
-        
               </motion.div>
             </motion.div>
           </div>
@@ -69,7 +60,7 @@ export default function Ray3Section() {
             <motion.h2
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.1 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeInOut" }}
               className="text-6xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white/90 mb-8 uppercase "
             >
               acerca de mí
@@ -79,7 +70,7 @@ export default function Ray3Section() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
               className="flex flex-wrap gap-3"
             >
               {/* <div className="relative w-48 aspect-video rounded-xl overflow-hidden">
@@ -104,11 +95,13 @@ export default function Ray3Section() {
                   Reflections
                 </span>
               </div> */}
-              
+
               <p className="text-sm/10 text-dark-muted leading-relaxed mb-8 max-w-md text-balance ">
-                <span className="text-dark-fg font-semibold">Ray3</span> es un modelo de video inteligente diseñado para
-                contar historias. Ray3 es capaz de pensar y razonar en visuales y ofrece física y consistencia de última
-                generación. En una primicia mundial, Ray3 genera videos en color de Alto Rango Dinámico de 16 bits,
+                <span className="text-dark-fg font-semibold">Ray3</span> es un
+                modelo de video inteligente diseñado para contar historias. Ray3
+                es capaz de pensar y razonar en visuales y ofrece física y
+                consistencia de última generación. En una primicia mundial, Ray3
+                genera videos en color de Alto Rango Dinámico de 16 bits,
                 llevando video generativo a pipelines de estudio profesional.
               </p>
             </motion.div>

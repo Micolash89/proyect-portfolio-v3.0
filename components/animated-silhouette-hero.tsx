@@ -102,7 +102,7 @@ export default function AnimatedSilhouetteHero() {
           ))}
         </div>
 
-        <motion.div
+        {/* <motion.div
           className="absolute right-4 md:right-12 top-1/3 w-56 md:w-72 aspect-video rounded-2xl overflow-hidden shadow-2xl "
           style={{ y: useTransform(scrollYProgress, [0, 1], [0, 150]) }}
           initial={{ opacity: 0, x: 100, rotate: 3 }}
@@ -135,7 +135,7 @@ export default function AnimatedSilhouetteHero() {
             width={100}
             height={100}
           />
-        </motion.div>
+        </motion.div> */}
 
         <motion.div
           className="absolute z-10 hidden md:block"

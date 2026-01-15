@@ -13,9 +13,9 @@ export default function Ray3Section() {
     <section
       ref={containerRef}
       id="aboutme"
-      className="relative pb-24 pt-0 sm:pb-36 sm:pt-0 bg-dark-bg text-dark-fg overflow-hidden "
+      className="relative pb-24 pt-0 sm:pb-36 sm:pt-28 bg-dark-bg text-dark-fg  overflow-hidden"
     >
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl px-0 sm:px-6">
         <div className="grid sm:grid-cols-2 gap-12 lg:gap-24 items-center">
           {/* Left Column */}
           <div>
@@ -50,13 +50,19 @@ export default function Ray3Section() {
                   height={650}
                   // className="w-72 md:w-96 lg:w-[450px] h-auto object-contain brightness-75 "
                   priority
+                  style={{
+                    maskImage:
+                      "linear-gradient(to bottom, black 60%, transparent 100%)",
+                    WebkitMaskImage:
+                      "linear-gradient(to bottom, black 60%, transparent 100%)",
+                  }}
                 />
               </motion.div>
             </motion.div>
           </div>
 
           {/* Right Column - RAY3 Title */}
-          <div>
+          <div className="px-6 sm:px-0">
             <motion.h2
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -66,38 +72,31 @@ export default function Ray3Section() {
               acerca de mí
             </motion.h2>
 
-            {/* Feature cards */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="flex flex-wrap gap-3"
             >
-              {/* <div className="relative w-48 aspect-video rounded-xl overflow-hidden">
-                <img
-                  src="/martial-arts-fighters-action-cinematic.jpg"
-                  alt="Física avanzada"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent flex items-end p-3">
-                  <span className="text-xs text-white">
-                    Advanced Physics
-                    <br />& Simulations
-                  </span>
-                </div>
-              </div>
-              <div className="px-4 py-3 rounded-xl bg-white/10 backdrop-blur">
-                <span className="text-xs text-dark-muted">
-                  Light
-                  <br />
-                  Interactivity
-                  <br />&<br />
-                  Reflections
-                </span>
-              </div> */}
-
               <p className="text-sm/10 text-dark-muted leading-relaxed mb-8 max-w-md text-balance ">
-                Soy un <span className="text-dark-fg font-semibold">desarrollador full stack</span> apasionado por crear experiencias digitales que resuelven problemas reales. Actualmente cursando<span className="text-dark-fg font-semibold"> Ingeniería en Informática</span>, me especializo en construir soluciones escalables y centradas en el usuario, desde interfaces intuitivas hasta sistemas backend robustos. Mi trayectoria incluye proyectos innovadores con inteligencia artificial y sistemas de gestión desarrollados en equipos multidisciplinarios. Lo que más me motiva es transformar ideas en productos de alto impacto, aplicando buenas prácticas y aprendiendo continuamente para llevar cada proyecto al siguiente nivel.
+                Soy un{" "}
+                <span className="text-dark-fg font-semibold">
+                  desarrollador full stack
+                </span>{" "}
+                apasionado por crear experiencias digitales que resuelven
+                problemas reales. Actualmente cursando
+                <span className="text-dark-fg font-semibold">
+                  {" "}
+                  Ingeniería en Informática
+                </span>
+                , me especializo en construir soluciones escalables y centradas
+                en el usuario, desde interfaces intuitivas hasta sistemas
+                backend robustos. Mi trayectoria incluye proyectos innovadores
+                con inteligencia artificial y sistemas de gestión desarrollados
+                en equipos multidisciplinarios. Lo que más me motiva es
+                transformar ideas en productos de alto impacto, aplicando buenas
+                prácticas y aprendiendo continuamente para llevar cada proyecto
+                al siguiente nivel.
               </p>
             </motion.div>
           </div>

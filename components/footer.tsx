@@ -33,14 +33,14 @@ export default function Footer() {
   ];
 
   return (
-    // <div >
+    <div className=" bg-zinc-900">
       <motion.footer
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
         ref={containerRef}
-        className="py-12 bg-zinc-900 "
+        className="py-12 "
         id="footer"
       >
         <div className="mx-auto max-w-7xl px-6">
@@ -71,6 +71,6 @@ export default function Footer() {
           </div>
         </div>
       </motion.footer>
-    // </div>
+     </div>
   );
 }

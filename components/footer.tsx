@@ -2,8 +2,6 @@
 
 import { Temporal } from "@js-temporal/polyfill";
 import { motion, useInView } from "framer-motion";
-import { div } from "framer-motion/client";
-// import LumaLogo from "@/components/luma-logo"
 import { Mail, Linkedin, Github } from "lucide-react";
 import { useRef } from "react";
 
@@ -45,19 +43,22 @@ export default function Footer() {
       >
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-            {/* <LumaLogo className="h-10" /> */}
-            <p className="text-sm text-muted-foreground">
+            <motion.p
+            initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: 0.3 * 0.1 }}
+            className="text-sm text-muted-foreground">
               © {Temporal.Now.plainDateISO().year} Espindola Javier. Todos los
               derechos reservados.
-            </p>
+            </motion.p>
             <div className="flex items-center gap-6 md:flex-row flex-col">
               {socialLinks.length > 0 &&
                 socialLinks.map((link, index) => (
                   <motion.a
                     key={link.label}
                     href={link.href}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                     target="_blank"
                     rel="noopener noreferrer"

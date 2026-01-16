@@ -13,12 +13,7 @@ import { technologies } from "./technologies";
 const colorWords = [
   "programador",
   "estudiante",
-  "código",
-  "diseño",
-  "ideas",
-  "sueños",
-  "innovación",
-  "futuro",
+  "innovador",
   "resiliente",
   "creativo",
   "apasionado",
@@ -34,6 +29,9 @@ const colorWords = [
   "comunicativo",
   "organizado",
   "eficiente",
+  "responsable",
+  "comprometido",
+  
 ];
 
 export default function AnimatedSilhouetteHero() {

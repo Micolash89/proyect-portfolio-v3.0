@@ -9,42 +9,52 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import createEmail from "@/lib/actions";
 import { toast } from "sonner";
-import axios from "axios";
+
+type FieldErrors = {
+  name?: string[];
+  email?: string[];
+  message?: string[];
+};
 
 export default function Contact() {
   const containerRef = useRef<HTMLElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (formData: FormData) => {
     setIsSubmitting(true);
+    setErrors({}); // Limpiar errores previos
 
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      message: formData.get("message"),
-    };
+    const response = await createEmail(formData);
 
-    try {
-      await axios.post("/api/contact", data).catch(() => {
-        return new Promise((resolve) => setTimeout(resolve, 1000));
-      });
-
-      toast.success("¡Mensaje enviado!", {
+    if (response.status) {
+      setName("");
+      setEmail("");
+      setMessage("");
+      toast.success("¡Mensaje enviado! ", {
         description: "Gracias por contactarme. Te responderé pronto.",
       });
+    } else {
+      setErrors(response.errors);
+      
+      // Mostrar el primer error encontrado
+      const firstError = 
+        response.errors.name?.[0] || 
+        response.errors.email?.[0] || 
+        response.errors.message?.[0];
 
-      e.currentTarget.reset();
-    } catch {
-      toast.error("Error al enviar", {
-        description: "Por favor intenta de nuevo más tarde.",
+      toast.error("Error en el formulario", {
+        description: firstError,
       });
-    } finally {
-      setIsSubmitting(false);
     }
+
+    setIsSubmitting(false);
   };
 
   return (
@@ -55,13 +65,12 @@ export default function Contact() {
     >
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
-          {/* Left Column - Info */}
           <div>
             <motion.span
               initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="text-sm text-luma-green uppercase tracking-widest mb-4 block"
+              className="text-2xl text-luma-green uppercase tracking-widest mb-4 block font-medium select-none"
             >
               Contacto
             </motion.span>
@@ -104,7 +113,7 @@ export default function Contact() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form action={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="name" className="text-foreground">
                   Nombre
@@ -114,9 +123,15 @@ export default function Contact() {
                   name="name"
                   type="text"
                   placeholder="Tu nombre"
-                  required
-                  className="bg-card border-border/50 focus:border-luma-green rounded-xl transition-colors"
+                  className={`bg-card border-border/50 focus:border-luma-green rounded-xl transition-colors ${
+                    errors.name ? "border-red-500" : ""
+                  }`}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
+                {errors.name && (
+                  <p className="text-sm text-red-500">{errors.name[0]}</p>
+                )}
               </div>
 
               <div className="space-y-2">
@@ -128,9 +143,15 @@ export default function Contact() {
                   name="email"
                   type="email"
                   placeholder="tu@email.com"
-                  required
-                  className="bg-card border-border/50 focus:border-luma-green rounded-xl transition-colors"
+                  className={`bg-card border-border/50 focus:border-luma-green rounded-xl transition-colors ${
+                    errors.email ? "border-red-500" : ""
+                  }`}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
+                {errors.email && (
+                  <p className="text-sm text-red-500">{errors.email[0]}</p>
+                )}
               </div>
 
               <div className="space-y-2">
@@ -141,10 +162,16 @@ export default function Contact() {
                   id="message"
                   name="message"
                   placeholder="Cuéntame sobre tu proyecto..."
-                  required
                   rows={6}
-                  className="bg-card border-border/50 focus:border-luma-green rounded-xl transition-colors resize-none"
+                  className={`bg-card border-border/50 focus:border-luma-green rounded-xl transition-colors resize-none ${
+                    errors.message ? "border-red-500" : ""
+                  }`}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                 />
+                {errors.message && (
+                  <p className="text-sm text-red-500">{errors.message[0]}</p>
+                )}
               </div>
 
               <Button

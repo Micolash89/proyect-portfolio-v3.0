@@ -7,13 +7,76 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
 
+// URL base de tu sitio
+const siteUrl = "https://espindola-javier.vercel.app"
+
 export const metadata: Metadata = {
-  title: "Nicolás Espíndola | Desarrollador Fullstack",
+  // Información básica
+  title: {
+    default: "Javier Nicolás Espíndola | Desarrollador Fullstack",
+    template: "%s | Javier Nicolás Espíndola"
+  },
   description:
-    "Desarrollador fullstack apasionado por crear experiencias web innovadoras y dinámicas. Especializado en el desarrollo web moderno con Nextjs y typescript.",
-  generator: "v0.app",
-  keywords: ["Desarrollador", "Frontend", "Next.js", "TypeScript", "React", "Portfolio", "Web", "Fullstack", "Backend"],
-  authors: [{ name: "Nicolás Espíndola" }],
+    "Desarrollador fullstack especializado en Next.js, TypeScript y React. Creando experiencias web modernas e innovadoras en Buenos Aires, Argentina.",
+  
+  keywords: [
+    "Desarrollador Fullstack",
+    "Frontend Developer",
+    "Backend Developer",
+    "Next.js",
+    "TypeScript",
+    "React",
+    "Node.js",
+    "Portfolio",
+    "Web Developer Argentina",
+    "Desarrollador Buenos Aires"
+  ],
+  
+  authors: [{ name: "Javier Nicolás Espíndola", url: siteUrl }],
+  creator: "Javier Nicolás Espíndola",
+  
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
+  
+  openGraph: {
+    type: "website",
+    locale: "es_AR",
+    url: siteUrl,
+    siteName: "Nicolás Espíndola Portfolio",
+    title: "Nicolás Espíndola | Desarrollador Fullstack",
+    description: "Desarrollador fullstack especializado en Next.js, TypeScript y React. Creando experiencias web modernas e innovadoras.",
+    images: [
+      {
+        url: "/images/og-image.jpg", 
+        width: 1200,
+        height: 630,
+        alt: "Nicolás Espíndola - Desarrollador Fullstack",
+      },
+    ],
+  },
+  
+  twitter: {
+    card: "summary_large_image",
+    title: "Nicolás Espíndola | Desarrollador Fullstack",
+    description: "Desarrollador fullstack especializado en Next.js, TypeScript y React.",
+    creator: "@nicolas20532192", 
+    images: ["/images/og-image.jpg"], 
+  },
+  
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  
   icons: {
     icon: [
       {
@@ -30,11 +93,18 @@ export const metadata: Metadata = {
       },
     ],
     apple: "/apple-icon.png",
+    shortcut: "/favicon.ico",
   },
+  
+  manifest: "/manifest.json",
+
 }
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
   width: "device-width",
   initialScale: 1,
 }

@@ -1,0 +1,61 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://tudominio.com/sitemap.xml
+```
+
+**¿Es necesario?**
+- ❌ Next.js tiene configuración por defecto en el metadata
+- ✅ Útil si quieres control manual
+
+---
+
+### 3. **`og-image.jpg`** (IMPORTANTE - Para compartir en redes)
+
+**¿Qué es?**
+- La imagen que aparece cuando compartes tu link en WhatsApp, Facebook, Twitter, LinkedIn
+- Sin esto, aparecerá un preview genérico y poco atractivo
+
+**Ubicación:** `/public/images/og-image.jpg`
+
+**Extensión:** `.jpg` o `.png`
+
+**Tamaño:** 1200 x 630 píxeles
+
+**Ejemplo de cómo se ve:**
+```
+Cuando alguien comparte: https://tudominio.com
+
+WhatsApp/Facebook mostrarán:
+┌──────────────────────────┐
+│  [TU IMAGEN OG-IMAGE]    │  ← Aquí se ve tu imagen
+│                          │
+│  Nicolás Espíndola       │  ← Del metadata.title
+│  Desarrollador Fullstack │
+│                          │
+│  Desarrollador fullstack │  ← Del metadata.description
+│  especializado en...     │
+└──────────────────────────┘
+```
+
+---
+
+## 📂 **Estructura final de tu proyecto:**
+```
+mi-portfolio/
+├── app/
+│   ├── layout.tsx          ← REEMPLAZAR con el código del artifact
+│   ├── page.tsx
+│   └── globals.css
+├── public/
+│   ├── og-image.jpg        ← CREAR (1200x630px) - IMPORTANTE
+│   ├── favicon.ico         ← Ya deberías tenerlo
+│   ├── icon.svg            ← Ya lo tienes
+│   ├── icon-light-32x32.png ← Ya lo tienes
+│   ├── icon-dark-32x32.png  ← Ya lo tienes
+│   ├── apple-icon.png       ← Ya lo tienes
+│   ├── manifest.json        ← CREAR (opcional)
+│   └── robots.txt           ← CREAR (opcional)
+└── package.json

@@ -54,17 +54,16 @@ export default function ProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        perspective: 1000,
-        transformStyle: "preserve-3d",
-      }}
-      className="group relative"
+      className="group"
     >
       <motion.div
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         animate={{ rotateX, rotateY }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        style={{
+          transformStyle: "preserve-3d",
+        }}
         className="relative bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-border transition-colors duration-300"
       >
         {/* Image */}
@@ -74,41 +73,45 @@ export default function ProjectCard({
             alt={title}
             fill
             sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none"
           />
-          <div className="absolute inset-0 bg-linear-to-t from-card to-transparent opacity-60" />
+          
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-linear-to-t from-card to-transparent opacity-60 pointer-events-none" />
 
           {/* Hover overlay with links */}
-          <div
-            className="absolute inset-0 bg-background/80 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto z-20"
-          >
+          <div className="absolute inset-0 flex justify-start ml-5 mt-5 md:ml-0 md:mt-0 items-start md:items-center md:justify-center gap-4 md:bg-background/0 md:group-hover:bg-background/80 transition-colors duration-300">
             {liveUrl && (
-              <a
+              <motion.a
                 href={liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 hover:cursor-pointer bg-foreground text-background rounded-full hover:scale-110 transition-transform "
+                className="p-3 bg-foreground text-background rounded-full cursor-pointer opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
                 aria-label="Ver proyecto"
               >
-                <ExternalLink size={20} />
-              </a>
+                <ExternalLink size={20} className="size-6" />
+              </motion.a>
             )}
             {githubUrl && (
-              <a
+              <motion.a
                 href={githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 cursor-pointer bg-foreground text-background rounded-full hover:scale-110 transition-transform"
+                className="p-3 bg-foreground text-background rounded-full cursor-pointer opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
                 aria-label="Ver código"
               >
                 <SiGithub className="size-5" />
-              </a>
+              </motion.a>
             )}
           </div>
         </div>
 
         {/* Content */}
-        <div className="p-6">
+        <div className="p-6 pointer-events-auto">
           <h3 className="text-xl font-bold text-foreground mb-2">{title}</h3>
           <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
             {description}

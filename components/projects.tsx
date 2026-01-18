@@ -19,7 +19,7 @@ const projects = [
       "CSS3",
       "VSCode",
     ],
-    liveUrl: "#",
+    liveUrl: "https://proyect-cv.vercel.app/",
     githubUrl: "https://github.com/Micolash89/proyect-cv",
   },
   {
@@ -36,7 +36,7 @@ const projects = [
       "CSS3",
       "VSCode",
     ],
-    liveUrl: "#",
+    liveUrl: "https://mvp-poloit.vercel.app/",
     githubUrl: "https://github.com/gabito1966/mvp_poloit",
   },
   {
@@ -54,7 +54,7 @@ const projects = [
       "CSS3",
       "VSCode",
     ],
-    liveUrl: "#",
+    liveUrl: "https://micolash89.github.io/crud-page/",
     githubUrl: "https://github.com/Micolash89/crud-page",
   },
   {
@@ -72,7 +72,7 @@ const projects = [
       "CSS3",
       "VSCode",
     ],
-    liveUrl: "#",
+    liveUrl: "https://micolash89.github.io/e-commerce-Coder-FrontEnd/",
     githubUrl: "https://github.com/Micolash89/e-commerce-Coder-FrontEnd",
   },
   {
@@ -80,7 +80,7 @@ const projects = [
     description: "proyecto integrador - curso de Educacion IT - Frond End React",
     image: "/images/educacion-it-proyecto-integrador2.jpg",
     tags: ["React", "Vite", "HTML5", "CSS3", "VSCode"],
-    liveUrl: "#",
+    liveUrl: "https://micolash89.github.io/Javier-Espindola-entrega03/",
     githubUrl: "https://github.com/Micolash89/Javier-Espindola-entrega03",
   },
   {
@@ -97,19 +97,10 @@ const projects = [
       "CSS3",
       "NetBeans",
     ],
-    liveUrl: "#",
+    liveUrl: "",
     githubUrl:
       "https://github.com/Micolash89/proyecto-bilioteca-egg-sprint-boot",
   },
-  // {
-  //   title: "Creacion de una splash Screen",
-  //   description: "Curso introducción a android - Fundación Telefónica Movistar",
-  //   image: "/images/android-screen-splash.jpg",
-  //   tags: ["Kotlin", "Android Studio"],
-  //   liveUrl: "#",
-  //   githubUrl:
-  //     "https://github.com/Micolash89/Modulo-3-Creacion-de-una-splash-screen-en-android/tree/master",
-  // },
 ];
 
 export default function Projects() {

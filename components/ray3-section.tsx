@@ -96,12 +96,12 @@ export default function Ray3Section() {
               </p>
             </motion.div>
           </motion.div>
-          <motion.div className="px-6 sm:px-0 block lg:hidden">
+          <motion.div className="px-3 block lg:hidden">
             <motion.h2
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeInOut" }}
-              className="text-6xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white/90 mb-8 uppercase"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white/90 mb-8 uppercase text-left"
             >
               acerca de mí
             </motion.h2>
@@ -112,7 +112,7 @@ export default function Ray3Section() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="flex flex-wrap gap-3"
             >
-              <p className="text-sm/10 text-dark-muted leading-relaxed mb-8 max-w-md text-balance">
+              <p className="text-sm/10 text-dark-muted leading-relaxed mb-8 max-w-xs text-balance ">
                 Soy un{" "}
                 <span className="text-dark-fg font-semibold">
                   desarrollador full stack

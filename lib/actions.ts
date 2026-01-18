@@ -4,17 +4,30 @@ import { EmailService } from "./service/emailService";
 
 const schema = z.object({
   name: z
-    .string()
-    .min(5, { message: "El nombre es obligatorio" })
-    .max(40, { message: "El nombre es muy largo" }),
-  email: z.string().email({ message: "El correo electrónico no es válido" }),
+    .string({ message: "Ingrese un nombre" })
+    .trim() // Elimina espacios al inicio y final
+    .min(2, { message: "El nombre debe contener al menos 2 caracteres" })
+    .max(50, { message: "El nombre puede contener hasta 50 caracteres" })
+    .regex(/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]+(?:[\s.'][a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]+)*$/, {
+      message: "El nombre solo puede contener letras, espacios, puntos y apóstrofes",
+    })
+    .refine((val) => !/\s{2,}/.test(val), {
+      message: "No se permiten espacios consecutivos",
+    })
+    .refine((val) => !/^[.\s']|[.\s']$/.test(val), {
+      message: "El nombre no puede comenzar o terminar con punto, espacio o apóstrofe",
+    }),
+  email: z
+    .string({ message: "Ingrese un email" })
+    .email("Debe ser un email válido")
+    .min(6, "El email debe contener al menos 6 caracteres")
+    .max(50, "El email puede contener hasta 50 caracteres"),
   message: z
-    .string()
-    .min(10, { message: "El mensaje es muy corto" })
-    .max(500, { message: "El mensaje es muy largo" }),
+    .string({ message: "Ingrese un mensaje" })
+    .min(10, { message: "El mensaje debe contener al menos 10 caracteres" })
+    .max(500, { message: "el mensaje debe contener menos de 500 caracteres" }),
 });
 
-// Tipos para la respuesta
 type FieldErrors = {
   name?: string[];
   email?: string[];
@@ -40,7 +53,6 @@ export default async function createEmail(
     message: formData.get("message"),
   });
 
-  // Return early if the form data is invalid
   if (!validatedFields.success) {
     return {
       status: false,

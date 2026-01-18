@@ -69,7 +69,7 @@ export default function AnimatedSilhouetteHero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWordIndex((prev) => (prev + 1) % colorWords.length);
-    }, 2000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -99,41 +99,6 @@ export default function AnimatedSilhouetteHero() {
             </motion.div>
           ))}
         </div>
-
-        {/* <motion.div
-          className="absolute right-4 md:right-12 top-1/3 w-56 md:w-72 aspect-video rounded-2xl overflow-hidden shadow-2xl "
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, 150]) }}
-          initial={{ opacity: 0, x: 100, rotate: 3 }}
-          animate={{ opacity: 1, x: 0, rotate: 3 }}
-          transition={{ duration: 2, delay: 0.7, ease: "easeOut" }}
-        >
-          <Image
-            src="/aurora-borealis-landscape-cinematic.jpg"
-            alt="Aurora boreal"
-            className="w-full h-full object-cover"
-            width={100}
-            height={100}
-          />
-        </motion.div>
-
-        <motion.div
-          className="absolute left-8 md:left-24 bottom-1/4 w-40 md:w-52 rounded-xl overflow-hidden shadow-xl bg-card"
-          style={{ y: useTransform(scrollYProgress, [0, 1], [0, 50]) }}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{
-            opacity: phase === "bottom" ? 1 : 0,
-            y: phase === "bottom" ? 0 : 40,
-          }}
-          transition={{ duration: 2, delay: 0.9, ease: "easeOut" }}
-        >
-          <Image
-            src="/images/silueta.pn"
-            alt="Músicos en desierto"
-            className="w-full aspect-video object-cover"
-            width={100}
-            height={100}
-          />
-        </motion.div> */}
 
         <motion.div
           className="absolute z-10 hidden md:block"

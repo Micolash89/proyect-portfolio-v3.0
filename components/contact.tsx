@@ -1,16 +1,13 @@
 "use client";
-
-import type React from "react";
-
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Send, MapPin } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import {  MapPin } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import createEmail from "@/lib/actions";
 import { toast } from "sonner";
+import ButtonForm from "./buttonForm";
 
 type FieldErrors = {
   name?: string[];
@@ -21,15 +18,13 @@ type FieldErrors = {
 export default function Contact() {
   const containerRef = useRef<HTMLElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (formData: FormData) => {
-    setIsSubmitting(true);
-    setErrors({}); // Limpiar errores previos
+    setErrors({});
 
     const response = await createEmail(formData);
 
@@ -42,19 +37,17 @@ export default function Contact() {
       });
     } else {
       setErrors(response.errors);
-      
+
       // Mostrar el primer error encontrado
-      const firstError = 
-        response.errors.name?.[0] || 
-        response.errors.email?.[0] || 
+      const firstError =
+        response.errors.name?.[0] ||
+        response.errors.email?.[0] ||
         response.errors.message?.[0];
 
       toast.error("Error en el formulario", {
         description: firstError,
       });
     }
-
-    setIsSubmitting(false);
   };
 
   return (
@@ -124,14 +117,23 @@ export default function Contact() {
                   type="text"
                   placeholder="Tu nombre"
                   className={`bg-card border-border/50 focus:border-luma-green rounded-xl transition-colors ${
-                    errors.name ? "border-red-500" : ""
+                    errors.name?.length ? "border-red-500" : ""
                   }`}
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    setErrors({ ...errors, name: [] });
+                  }}
                 />
-                {errors.name && (
-                  <p className="text-sm text-red-500">{errors.name[0]}</p>
-                )}
+                {errors.name &&
+                  errors.name.map((e, index) => (
+                    <p
+                      key={"errorName" + index}
+                      className="text-sm text-red-500"
+                    >
+                      {e}
+                    </p>
+                  ))}
               </div>
 
               <div className="space-y-2">
@@ -144,14 +146,23 @@ export default function Contact() {
                   type="email"
                   placeholder="tu@email.com"
                   className={`bg-card border-border/50 focus:border-luma-green rounded-xl transition-colors ${
-                    errors.email ? "border-red-500" : ""
+                    errors.email?.length ? "border-red-500" : ""
                   }`}
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setErrors({ ...errors, email: [] });
+                  }}
                 />
-                {errors.email && (
-                  <p className="text-sm text-red-500">{errors.email[0]}</p>
-                )}
+                {errors.email &&
+                  errors.email.map((e, index) => (
+                    <p
+                      key={"errorEmail" + index}
+                      className="text-sm text-red-500"
+                    >
+                      {e}
+                    </p>
+                  ))}
               </div>
 
               <div className="space-y-2">
@@ -164,17 +175,26 @@ export default function Contact() {
                   placeholder="Cuéntame sobre tu proyecto..."
                   rows={6}
                   className={`bg-card border-border/50 focus:border-luma-green rounded-xl transition-colors resize-none ${
-                    errors.message ? "border-red-500" : ""
+                    errors.message?.length ? "border-red-500" : ""
                   }`}
                   value={message}
-                  onChange={(e) => setMessage(e.target.value)}
+                  onChange={(e) => {
+                    setMessage(e.target.value);
+                    setErrors({ ...errors, message: [] });
+                  }}
                 />
-                {errors.message && (
-                  <p className="text-sm text-red-500">{errors.message[0]}</p>
-                )}
+                {errors.message &&
+                  errors.message.map((e, index) => (
+                    <p
+                      key={"errorMessage" + index}
+                      className="text-sm text-red-500"
+                    >
+                      {e}
+                    </p>
+                  ))}
               </div>
 
-              <Button
+              {/* <Button
                 type="submit"
                 size="lg"
                 disabled={isSubmitting}
@@ -199,7 +219,10 @@ export default function Contact() {
                     Enviar Mensaje
                   </span>
                 )}
-              </Button>
+              </Button> */}
+
+                <ButtonForm/>
+
             </form>
           </motion.div>
         </div>

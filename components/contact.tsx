@@ -8,12 +8,8 @@ import { Label } from "@/components/ui/label";
 import createEmail from "@/lib/actions";
 import { toast } from "sonner";
 import ButtonForm from "./buttonForm";
+import { FieldErrors } from "@/lib/definitions";
 
-type FieldErrors = {
-  name?: string[];
-  email?: string[];
-  message?: string[];
-};
 
 export default function Contact() {
   const containerRef = useRef<HTMLElement>(null);
@@ -38,7 +34,6 @@ export default function Contact() {
     } else {
       setErrors(response.errors);
 
-      // Mostrar el primer error encontrado
       const firstError =
         response.errors.name?.[0] ||
         response.errors.email?.[0] ||

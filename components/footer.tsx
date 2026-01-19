@@ -1,34 +1,13 @@
 "use client";
 
+import { socialLinks } from "@/lib/constants";
 import { Temporal } from "@js-temporal/polyfill";
 import { motion, useInView } from "framer-motion";
-import { Mail, Linkedin, Github } from "lucide-react";
 import { useRef } from "react";
 
 export default function Footer() {
   const containerRef = useRef<HTMLElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-
-  const socialLinks = [
-    {
-      icon: Mail,
-      label: "Email",
-      href: "mailto:espindolajavier2013@gmail.com",
-      value: "espindolajavier2013@gmail.com",
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      href: "https://linkedin.com/in/javier-espindola/",
-      value: "javier Espindola",
-    },
-    {
-      icon: Github,
-      label: "GitHub",
-      href: "https://github.com/Micolash89",
-      value: "@Micolash89",
-    },
-  ];
 
   return (
     <div className=" bg-zinc-900">
@@ -44,10 +23,11 @@ export default function Footer() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
             <motion.p
-            initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.3 * 0.1 }}
-            className="text-sm text-muted-foreground">
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 * 0.1 }}
+              className="text-sm text-muted-foreground"
+            >
               © {Temporal.Now.plainDateISO().year} Espindola Javier. Todos los
               derechos reservados.
             </motion.p>
@@ -72,6 +52,6 @@ export default function Footer() {
           </div>
         </div>
       </motion.footer>
-     </div>
+    </div>
   );
 }

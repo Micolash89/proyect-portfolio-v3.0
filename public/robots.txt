@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://tudominio.com/sitemap.xml
+Sitemap: https://espindola-javier.vercel.app/sitemap.xml
 ```
 
 **¿Es necesario?**
@@ -26,7 +26,7 @@ Sitemap: https://tudominio.com/sitemap.xml
 
 **Ejemplo de cómo se ve:**
 ```
-Cuando alguien comparte: https://tudominio.com
+Cuando alguien comparte: https://espindola-javier.vercel.app/
 
 WhatsApp/Facebook mostrarán:
 ┌──────────────────────────┐

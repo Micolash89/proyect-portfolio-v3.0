@@ -6,13 +6,7 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-
-const navItems = [
-  { href: "#Home", label: "inicio" },
-  { href: "#proyectos", label: "Proyectos" },
-  { href: "#aboutme", label: "acerca de mí" },
-  { href: "#contacto", label: "Contacto" },
-];
+import { navItems } from "@/lib/constants";
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

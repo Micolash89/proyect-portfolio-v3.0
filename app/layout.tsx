@@ -7,7 +7,6 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
 
-// URL base de tu sitio
 const siteUrl = "https://espindola-javier.vercel.app"
 
 export const metadata: Metadata = {
@@ -16,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | Javier Nicolás Espíndola"
   },
   description:
-    "Desarrollador fullstack. Creando experiencias web modernas e innovadoras en Buenos Aires, Argentina.",
+    "Desarrollador fullstack especializado en Next.js, TypeScript y React. Creando experiencias web modernas e innovadoras en Buenos Aires, Argentina.",
   
   keywords: [
     "Desarrollador Fullstack",
@@ -45,7 +44,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "Javier Nicolás Espíndola Portfolio",
     title: "Javier Nicolás Espíndola | Desarrollador Fullstack",
-    description: "Desarrollador fullstack. Creando experiencias web modernas e innovadoras.",
+    description: "Desarrollador fullstack especializado en Next.js, TypeScript y React. Creando experiencias web modernas e innovadoras.",
     images: [
       {
         url: "/images/og-image.jpg", 
@@ -59,7 +58,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Javier Nicolás Espíndola | Desarrollador Fullstack",
-    description: "Desarrollador fullstack.",
+    description: "Desarrollador fullstack especializado en Next.js, TypeScript y React.",
     creator: "@nicolas20532192", 
     images: ["/images/og-image.jpg"], 
   },
@@ -77,26 +76,34 @@ export const metadata: Metadata = {
   },
   
   icons: {
+    // Favicon principal
     icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" }, // Fallback para navegadores antiguos
+    ],
+    // Apple Touch Icon
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    // Íconos de Android Chrome
+    other: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
+        rel: "icon",
+        url: "/android-chrome-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
       },
       {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        rel: "icon",
+        url: "/android-chrome-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
       },
     ],
-    apple: "/apple-icon.png",
-    shortcut: "/favicon.ico",
   },
   
-  manifest: "/manifest.json",
-
+  manifest: "/site.webmanifest",
 }
 
 export const viewport: Viewport = {

@@ -9,30 +9,8 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import Image from "next/image";
-import { technologies } from "./technologies";
-const colorWords = [
-  "programador",
-  "estudiante",
-  "innovador",
-  "resiliente",
-  "creativo",
-  "apasionado",
-  "visionario",
-  "líder",
-  "colaborador",
-  "solucionador",
-  "adaptable",
-  "curioso",
-  "detallista",
-  "estratégico",
-  "proactivo",
-  "comunicativo",
-  "organizado",
-  "eficiente",
-  "responsable",
-  "comprometido",
-  
-];
+import { colorWords, technologies } from "@/lib/constants";
+
 
 export default function AnimatedSilhouetteHero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -229,7 +207,7 @@ export default function AnimatedSilhouetteHero() {
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   exit={{ opacity: 0, y: -20, filter: "blur(10px)" }}
                   transition={{ duration: 0.5 }}
-                  className="absolute left-0 -top-8 md:-top-11.5 xl:-top-13 bg-linear-to-r from-luma-green via-luma-blue to-luma-orange bg-clip-text italic text-zinc-200 "
+                  className="absolute left-0 -top-8 md:-top-11.5 xl:-top-13 bg-linear-to-r from-luma-green via-luma-blue to-luma-orange bg-clip-text italic text-zinc-400 sm:text-zinc-200 "
                 >
                   {colorWords[currentWordIndex]}
                 </motion.span>

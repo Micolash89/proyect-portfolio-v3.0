@@ -7,16 +7,8 @@ import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { SiGithub } from "@icons-pack/react-simple-icons";
+import { ProjectCardProps } from "@/lib/definitions";
 
-interface ProjectCardProps {
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  liveUrl?: string;
-  githubUrl?: string;
-  index: number;
-}
 
 export default function ProjectCard({
   title,
@@ -66,7 +58,6 @@ export default function ProjectCard({
         }}
         className="relative bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-border transition-colors duration-300"
       >
-        {/* Image */}
         <div className="relative aspect-video overflow-hidden">
           <Image
             src={image || "/placeholder.svg"}
@@ -76,10 +67,8 @@ export default function ProjectCard({
             className="object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none"
           />
           
-          {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-linear-to-t from-card to-transparent opacity-60 pointer-events-none" />
 
-          {/* Hover overlay with links */}
           <div className="absolute inset-0 flex justify-start ml-5 mt-5 md:ml-0 md:mt-0 items-start md:items-center md:justify-center gap-4 md:bg-background/0 md:group-hover:bg-background/80 transition-colors duration-300">
             {liveUrl && (
               <motion.a
@@ -120,7 +109,7 @@ export default function ProjectCard({
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="text-xs px-3 py-1 bg-secondary text-muted-foreground rounded-full"
+                className="text-xs px-3 py-1 bg-secondary text-muted-foreground rounded-full h-fit text-center"
               >
                 {tag}
               </span>

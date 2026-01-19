@@ -2,152 +2,12 @@
 
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import {
-  SiNextdotjs,
-  SiTypescript,
-  SiReact,
-  SiTailwindcss,
-  SiFramer,
-  SiNodedotjs,
-  SiGit,
-  SiVercel,
-  SiJavascript,
-  SiHtml5,
-  SiCss,
-  SiSpring,
-  SiMongodb,
-  SiPostgresql,
-  SiSupabase,
-  SiPnpm,
-  SiExpress,
-  SiMysql,
-  SiPrisma,
-  SiPostman,
-  SiPython,
-  SiGithub,
-  IconType,
-} from "@icons-pack/react-simple-icons";
+import { technologies } from "@/lib/constants";
 
-export type Technology = {
-  name: string;
-  Icon: IconType;
-  positionClass: string;
-  imageSrc?: string;
-};
 
-export const technologies: Technology[] = [
-  {
-    name: "Next.js",
-    Icon: SiNextdotjs,
-    positionClass: "right-16 md:right-32 top-48",
-    imageSrc: "/images/tech/next.jpg",
-  },
-  {
-    name: "TypeScript",
-    Icon: SiTypescript,
-    positionClass: "right-8 md:right-16 top-16",
-  },
-  {
-    name: "React",
-    Icon: SiReact,
-    positionClass: "left-6 md:left-20 top-32",
-  },
-  {
-    name: "Tailwind CSS",
-    Icon: SiTailwindcss,
-    positionClass: "right-40 md:right-56 top-20",
-  },
-  {
-    name: "Framer Motion",
-    Icon: SiFramer,
-    positionClass: "left-16 md:left-40 bottom-32",
-  },
-  {
-    name: "Node.js",
-    Icon: SiNodedotjs,
-    positionClass: "right-24 md:right-44 bottom-40",
-  },
-  {
-    name: "Git",
-    Icon: SiGit,
-    positionClass: "left-32 md:left-64 top-56",
-  },
-  {
-    name: "Vercel",
-    Icon: SiVercel,
-    positionClass: "left-8 md:left-16 top-12",
-  },
-  {
-    name: "JavaScript",
-    Icon: SiJavascript,
-    positionClass: "right-52 md:right-80 top-36",
-  },
-  {
-    name: "HTML5",
-    Icon: SiHtml5,
-    positionClass: "right-12 md:right-28 bottom-24",
-  },
-  {
-    name: "CSS3",
-    Icon: SiCss,
-    positionClass: "left-24 md:left-52 top-20",
-  },
-  {
-    name: "Spring",
-    Icon: SiSpring,
-    positionClass: "left-48 md:left-96 top-44",
-  },
-  {
-    name: "MongoDB",
-    Icon: SiMongodb,
-    positionClass: "left-12 md:left-28 bottom-20",
-  },
-  {
-    name: "PostgreSQL",
-    Icon: SiPostgresql,
-    positionClass: "right-36 md:right-64 bottom-28",
-  },
-  {
-    name: "Supabase",
-    Icon: SiSupabase,
-    positionClass: "left-40 md:left-80 top-12",
-  },
-  {
-    name: "pnpm",
-    Icon: SiPnpm,
-    positionClass: "right-48 md:right-72 top-52",
-  },
-  {
-    name: "Express.js",
-    Icon: SiExpress,
-    positionClass: "left-64 md:left-[420px] top-28",
-  },
-  {
-    name: "MySQL",
-    Icon: SiMysql,
-    positionClass: "right-60 md:right-96 bottom-36",
-  },
-  {
-    name: "Prisma",
-    Icon: SiPrisma,
-    positionClass: "left-56 md:left-[360px] bottom-16",
-  },
-  {
-    name: "Postman",
-    Icon: SiPostman,
-    positionClass: "right-20 md:right-40 top-60",
-  },
-  {
-    name: "GitHub",
-    Icon: SiGithub,
-    positionClass: "left-20 md:left-44 top-64",
-  },
-  {
-    name: "Python",
-    Icon: SiPython,
-    positionClass: "right-64 md:right-[420px] top-16",
-  },
-];
+
+
+
 
 export default function Technologies() {
   const containerRef = useRef<HTMLElement>(null);
@@ -211,7 +71,7 @@ export default function Technologies() {
                   size={48}
                   className=" text-muted-foreground group-hover:text-foreground transition-colors duration-300"
                 />
-                <span className="text-xs md:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                <span className="text-xs text-center md:text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">
                   {tech.name}
                 </span>
               </div>

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s | Javier Nicolás Espíndola"
   },
   description:
-    "Desarrollador fullstack especializado en Next.js, TypeScript y React. Creando experiencias web modernas e innovadoras en Buenos Aires, Argentina.",
+    "Desarrollador fullstack. Creando experiencias web modernas e innovadoras en Buenos Aires, Argentina.",
   
   keywords: [
     "Desarrollador Fullstack",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "Javier Nicolás Espíndola Portfolio",
     title: "Javier Nicolás Espíndola | Desarrollador Fullstack",
-    description: "Desarrollador fullstack especializado en Next.js, TypeScript y React. Creando experiencias web modernas e innovadoras.",
+    description: "Desarrollador fullstack. Creando experiencias web modernas e innovadoras.",
     images: [
       {
         url: "/images/og-image.jpg", 
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Javier Nicolás Espíndola | Desarrollador Fullstack",
-    description: "Desarrollador fullstack especializado en Next.js, TypeScript y React.",
+    description: "Desarrollador fullstack.",
     creator: "@nicolas20532192", 
     images: ["/images/og-image.jpg"], 
   },

@@ -11,7 +11,6 @@ const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono"
 const siteUrl = "https://espindola-javier.vercel.app"
 
 export const metadata: Metadata = {
-  // Información básica
   title: {
     default: "Javier Nicolás Espíndola | Desarrollador Fullstack",
     template: "%s | Javier Nicolás Espíndola"
@@ -44,22 +43,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_AR",
     url: siteUrl,
-    siteName: "Nicolás Espíndola Portfolio",
-    title: "Nicolás Espíndola | Desarrollador Fullstack",
+    siteName: "Javier Nicolás Espíndola Portfolio",
+    title: "Javier Nicolás Espíndola | Desarrollador Fullstack",
     description: "Desarrollador fullstack especializado en Next.js, TypeScript y React. Creando experiencias web modernas e innovadoras.",
     images: [
       {
         url: "/images/og-image.jpg", 
         width: 1200,
         height: 630,
-        alt: "Nicolás Espíndola - Desarrollador Fullstack",
+        alt: "Javier Nicolás Espíndola - Desarrollador Fullstack",
       },
     ],
   },
   
   twitter: {
     card: "summary_large_image",
-    title: "Nicolás Espíndola | Desarrollador Fullstack",
+    title: "Javier Nicolás Espíndola | Desarrollador Fullstack",
     description: "Desarrollador fullstack especializado en Next.js, TypeScript y React.",
     creator: "@nicolas20532192", 
     images: ["/images/og-image.jpg"], 

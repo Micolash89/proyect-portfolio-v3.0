@@ -44,7 +44,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    <link.icon size={16} />
+                    <link.icon size={20} />
                     <span>{link.value}</span>
                   </motion.a>
                 ))}

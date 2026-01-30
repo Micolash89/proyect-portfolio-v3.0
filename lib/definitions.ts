@@ -1,4 +1,4 @@
-import { IconType } from "@icons-pack/react-simple-icons";
+import type { IconType } from "react-icons";
 
 export type FieldErrors = {
   name?: string[];

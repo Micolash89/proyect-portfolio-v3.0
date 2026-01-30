@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import {  MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -9,7 +9,6 @@ import createEmail from "@/lib/actions";
 import { toast } from "sonner";
 import ButtonForm from "./buttonForm";
 import { FieldErrors } from "@/lib/definitions";
-
 
 export default function Contact() {
   const containerRef = useRef<HTMLElement>(null);
@@ -53,12 +52,12 @@ export default function Contact() {
     >
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
-          <div>
+          <div className="text-center sm:text-left">
             <motion.span
               initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="text-2xl text-luma-green uppercase tracking-widest mb-4 block font-medium select-none"
+              className="text-2xl text-luma-green uppercase tracking-widest mb-8 sm:mb-4 block font-medium select-none"
             >
               Contacto
             </motion.span>
@@ -89,7 +88,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex items-center gap-3 text-muted-foreground mb-8"
+              className="flex items-center gap-3 text-muted-foreground mb-8 justify-center sm:justify-start"
             >
               <MapPin size={18} className="text-luma-green" />
               <span>Buenos Aires, Argentina</span>
@@ -189,35 +188,7 @@ export default function Contact() {
                   ))}
               </div>
 
-              {/* <Button
-                type="submit"
-                size="lg"
-                disabled={isSubmitting}
-                className="w-full bg-foreground text-background hover:bg-foreground/90 rounded-full transition-all duration-30 hover:cursor-pointer"
-              >
-                {isSubmitting ? (
-                  <span className="flex items-center gap-2">
-                    <motion.span
-                      animate={{ rotate: 360 }}
-                      transition={{
-                        duration: 1,
-                        repeat: Number.POSITIVE_INFINITY,
-                        ease: "linear",
-                      }}
-                      className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full"
-                    />
-                    Enviando...
-                  </span>
-                ) : (
-                  <span className="flex items-center gap-2">
-                    <Send size={18} />
-                    Enviar Mensaje
-                  </span>
-                )}
-              </Button> */}
-
-                <ButtonForm/>
-
+              <ButtonForm />
             </form>
           </motion.div>
         </div>

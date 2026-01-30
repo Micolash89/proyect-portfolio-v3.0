@@ -72,9 +72,9 @@ export default function Ray3Section() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex flex-wrap gap-3"
+              className="flex flex-wrap gap-3 "
             >
-              <p className="text-sm/10 text-dark-muted leading-relaxed mb-8 max-w-md text-balance">
+              <p className="text-sm/10 sm:text-base/8 text-dark-muted leading-relaxed mb-8 max-w-md text-balance ">
                 Soy un{" "}
                 <span className="text-dark-fg font-semibold">
                   desarrollador full stack
@@ -101,7 +101,7 @@ export default function Ray3Section() {
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeInOut" }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white/90 mb-8 uppercase text-left"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white/90 mb-8 uppercase ml-25 "
             >
               acerca de mí
             </motion.h2>
@@ -112,7 +112,7 @@ export default function Ray3Section() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="flex flex-wrap gap-3"
             >
-              <p className="text-sm/10 text-dark-muted leading-relaxed mb-8 max-w-xs text-balance ">
+              <p className="text-base/10 text-dark-muted leading-relaxed mb-8 max-w-sm text-left text-balance ml-15 ">
                 Soy un{" "}
                 <span className="text-dark-fg font-semibold">
                   desarrollador full stack

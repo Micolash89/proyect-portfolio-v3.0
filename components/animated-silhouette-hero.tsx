@@ -7,22 +7,30 @@ import {
   useTransform,
   useSpring,
   AnimatePresence,
+  useInView,
 } from "framer-motion";
 import Image from "next/image";
 import { colorWords, technologies } from "@/lib/constants";
 
+// 2 filas equilibradas para mobile (más grande = mejor espacio)
 const mobileCarouselRows = [
-  technologies.slice(0, 7),
-  technologies.slice(7, 14),
-  technologies.slice(14, 21),
-  technologies.slice(21),
+  technologies.slice(0, 12),  // Primera fila: primeros 12 tech
+  technologies.slice(12, 24), // Segunda fila: siguientes 12 tech
 ]
 
 export default function AnimatedSilhouetteHero() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const mobileCarouselRef = useRef<HTMLDivElement>(null);
   const [phase, setPhase] = useState<"center" | "bottom">("center");
   const [isMobileCarouselActive, setIsMobileCarouselActive] = useState(false);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  
+  // Detectar si el carrusel mobile está visible en pantalla
+  const isMobileCarouselInView = useInView(mobileCarouselRef, {
+    once: false,
+    amount: 0.5,
+  });
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -66,46 +74,60 @@ export default function AnimatedSilhouetteHero() {
     return () => clearInterval(interval);
   }, []);
 
+  // Detectar preferencia de movimiento reducido
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mediaQuery.matches);
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches);
+    };
+    
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
   return (
     <div ref={containerRef} className="relative">
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-zinc-900">
-        <div className="absolute inset-0 z-0 pointer-events-none md:hidden">
-          <div className="absolute inset-0 flex flex-col justify-center gap-3 px-2">
+        <div 
+          ref={mobileCarouselRef}
+          className="absolute inset-0 z-0 pointer-events-none md:hidden"
+        >
+          <div className="absolute inset-0 flex flex-col justify-center gap-4 px-3">
             {mobileCarouselRows.map((row, rowIndex) => {
-              const moveRight = rowIndex % 2 === 0
+              const moveRight = rowIndex % 2 === 0;
+              const isAnimating = isMobileCarouselActive && isMobileCarouselInView && !prefersReducedMotion;
+              
               return (
                 <div key={`row-${rowIndex}`} className="overflow-hidden">
                   <motion.div
-                    className="flex w-max gap-2"
+                    className="flex w-max gap-3"
                     initial={false}
                     animate={
-                      isMobileCarouselActive
+                      isAnimating
                         ? {
-                            x: moveRight ? ["-50%", "0%"] : ["0%", "-50%"],
-                            opacity: 0.38,
+                            opacity: 0.4,
                           }
-                        : { x: "0%", opacity: 0 }
+                        : { opacity: 0 }
                     }
-                    transition={
-                      isMobileCarouselActive
-                        ? {
-                            x: {
-                              duration: 18 + rowIndex * 2,
-                              repeat: Number.POSITIVE_INFINITY,
-                              ease: "linear",
-                            },
-                            opacity: { duration: 0.45 },
-                          }
-                        : { opacity: { duration: 0.25 } }
-                    }
+                    transition={{
+                      opacity: { duration: 0.45 },
+                    }}
+                    style={{
+                      x: isAnimating ? 0 : "0%",
+                      animation: isAnimating 
+                        ? `carousel-${moveRight ? "right" : "left"} ${20 + rowIndex * 2}s linear infinite`
+                        : "none",
+                    }}
                   >
                     {[...row, ...row].map((tech, index) => (
                       <div
                         key={`${tech.name}-${rowIndex}-${index}`}
-                        className="flex items-center gap-2 rounded-xl border border-border/45 bg-card/55 px-3 py-2 backdrop-blur-sm"
+                        className="flex-shrink-0 flex items-center gap-2.5 rounded-lg border border-border/40 bg-card/45 px-4 py-2.5 transition-colors duration-200"
                       >
-                        <tech.Icon size={16} className="text-muted-foreground" />
-                        <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground/90">
+                        <tech.Icon size={22} className="text-muted-foreground flex-shrink-0" />
+                        <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground/85 whitespace-nowrap">
                           {tech.name}
                         </span>
                       </div>

@@ -16,16 +16,12 @@ export class EmailService {
     });
   }
 
-  async sendEmailConstact(name: string, email: string, message: string) {
-    try {
-      await this.transporter.sendMail({
-        from: '"Portfolio 3.0 mensaje" <noreply@proyect-cv.com>',
-        to: envEmailConfig.email_send,
-        subject: "Nuevo mensaje de contacto",
-        html: `mensaje de: <b>${name}</b> <br/> <b>email:</b> ${email} <br/> <p>${message}</p>`,
-      });
-    } catch (error) {
-      console.error("Error enviando email", error);
-    }
+  async sendEmailContact(name: string, email: string, message: string) {
+    await this.transporter.sendMail({
+      from: '"Portfolio 3.0 mensaje" <noreply@proyect-cv.com>',
+      to: envEmailConfig.email_send,
+      subject: "Nuevo mensaje de contacto",
+      html: `mensaje de: <b>${name}</b> <br/> <b>email:</b> ${email} <br/> <p>${message}</p>`,
+    });
   }
 }

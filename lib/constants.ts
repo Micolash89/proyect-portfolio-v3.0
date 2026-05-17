@@ -1,4 +1,4 @@
-import { Mail, Linkedin } from "lucide-react";
+import { Mail } from "lucide-react";
 import {
   SiNextdotjs,
   SiTypescript,
@@ -22,6 +22,7 @@ import {
   SiPostman,
   SiPython,
   SiGithub,
+  SiGithubcopilot,
   SiRender,
 } from "@icons-pack/react-simple-icons";
 
@@ -308,6 +309,11 @@ export const technologies: Technology[] = [
     name: "GitHub",
     Icon: SiGithub,
     positionClass: "left-20 md:left-44 top-64",
+  },
+  {
+    name: "GitHub Copilot",
+    Icon: SiGithubcopilot,
+    positionClass: "right-14 md:right-24 top-72",
   },
   {
     name: "Postman",

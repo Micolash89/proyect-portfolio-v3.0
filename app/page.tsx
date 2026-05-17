@@ -8,7 +8,7 @@ import AnimatedSilhouetteHero from "@/components/animated-silhouette-hero"
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main id="Home" className="relative">
       <AnimatedSilhouetteHero />
       <Navigation />
       <Projects />

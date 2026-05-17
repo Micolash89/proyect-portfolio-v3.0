@@ -64,10 +64,10 @@ export default async function createEmail(
   const emailService = new EmailService();
 
   try {
-    await emailService.sendEmailConstact(name, email, message);
+    await emailService.sendEmailContact(name, email, message);
 
     return { status: true, message: "Mensaje enviado correctamente" };
-  } catch (error) {
+  } catch {
     return {
       status: false,
       errors: { message: ["Error al enviar el mensaje. Intenta de nuevo."] },

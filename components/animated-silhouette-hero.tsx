@@ -11,10 +11,17 @@ import {
 import Image from "next/image";
 import { colorWords, technologies } from "@/lib/constants";
 
+const mobileCarouselRows = [
+  technologies.slice(0, 7),
+  technologies.slice(7, 14),
+  technologies.slice(14, 21),
+  technologies.slice(21),
+]
 
 export default function AnimatedSilhouetteHero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [phase, setPhase] = useState<"center" | "bottom">("center");
+  const [isMobileCarouselActive, setIsMobileCarouselActive] = useState(false);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
   const { scrollYProgress } = useScroll({
@@ -45,6 +52,14 @@ export default function AnimatedSilhouetteHero() {
   }, []);
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsMobileCarouselActive(true);
+    }, 2800);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWordIndex((prev) => (prev + 1) % colorWords.length);
     }, 3000);
@@ -54,6 +69,54 @@ export default function AnimatedSilhouetteHero() {
   return (
     <div ref={containerRef} className="relative">
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-zinc-900">
+        <div className="absolute inset-0 z-0 pointer-events-none md:hidden">
+          <div className="absolute inset-0 flex flex-col justify-center gap-3 px-2">
+            {mobileCarouselRows.map((row, rowIndex) => {
+              const moveRight = rowIndex % 2 === 0
+              return (
+                <div key={`row-${rowIndex}`} className="overflow-hidden">
+                  <motion.div
+                    className="flex w-max gap-2"
+                    initial={false}
+                    animate={
+                      isMobileCarouselActive
+                        ? {
+                            x: moveRight ? ["-50%", "0%"] : ["0%", "-50%"],
+                            opacity: 0.38,
+                          }
+                        : { x: "0%", opacity: 0 }
+                    }
+                    transition={
+                      isMobileCarouselActive
+                        ? {
+                            x: {
+                              duration: 18 + rowIndex * 2,
+                              repeat: Number.POSITIVE_INFINITY,
+                              ease: "linear",
+                            },
+                            opacity: { duration: 0.45 },
+                          }
+                        : { opacity: { duration: 0.25 } }
+                    }
+                  >
+                    {[...row, ...row].map((tech, index) => (
+                      <div
+                        key={`${tech.name}-${rowIndex}-${index}`}
+                        className="flex items-center gap-2 rounded-xl border border-border/45 bg-card/55 px-3 py-2 backdrop-blur-sm"
+                      >
+                        <tech.Icon size={16} className="text-muted-foreground" />
+                        <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground/90">
+                          {tech.name}
+                        </span>
+                      </div>
+                    ))}
+                  </motion.div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
         <div className="hidden md:block">
           {technologies.map((tech, index) => (
             <motion.div

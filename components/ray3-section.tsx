@@ -32,7 +32,7 @@ export default function Ray3Section() {
               style={{ x: imageX }}
             >
               <motion.div
-                className="relative w-full max-w-xl aspect-video h-[500] lg:w-auto lg:h-[700] overflow-hidden"
+                className="relative w-full max-w-xl aspect-video h-[500px] lg:w-auto lg:h-[700px] overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.5 }}

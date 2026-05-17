@@ -2,8 +2,8 @@
 
 import type React from "react";
 
-import { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { SiGithub } from "@icons-pack/react-simple-icons";
@@ -20,8 +20,10 @@ export default function ProjectCard({
   index,
 }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+  const springRotateX = useSpring(rotateX, { stiffness: 220, damping: 24 });
+  const springRotateY = useSpring(rotateY, { stiffness: 220, damping: 24 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -30,13 +32,13 @@ export default function ProjectCard({
     const centerY = rect.top + rect.height / 2;
     const mouseX = e.clientX - centerX;
     const mouseY = e.clientY - centerY;
-    setRotateX(-mouseY / 20);
-    setRotateY(mouseX / 20);
+    rotateX.set(-mouseY / 20);
+    rotateY.set(mouseX / 20);
   };
 
   const handleMouseLeave = () => {
-    setRotateX(0);
-    setRotateY(0);
+    rotateX.set(0);
+    rotateY.set(0);
   };
 
   return (
@@ -51,9 +53,9 @@ export default function ProjectCard({
       <motion.div
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        animate={{ rotateX, rotateY }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
         style={{
+          rotateX: springRotateX,
+          rotateY: springRotateY,
           transformStyle: "preserve-3d",
         }}
         className="relative bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-border transition-colors duration-300"

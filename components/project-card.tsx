@@ -107,7 +107,7 @@ export default function ProjectCard({
           <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
             {description}
           </p>
-          <div className="flex flex-nowrap gap-2">
+          <div className="flex flex-wrap gap-2">
             {tags.map((tag) => (
               <span
                 key={tag}

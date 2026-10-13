@@ -8,6 +8,7 @@ import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { ProjectCardProps } from "@/lib/definitions";
+import TagMarquee from "@/components/tag-marquee";
 
 
 export default function ProjectCard({
@@ -48,7 +49,7 @@ export default function ProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group"
+      className="group project-card"
     >
       <motion.div
         onMouseMove={handleMouseMove}
@@ -107,16 +108,7 @@ export default function ProjectCard({
           <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
             {description}
           </p>
-          <div className="flex flex-nowrap gap-2">
-            {tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-xs px-3 py-1 bg-secondary text-muted-foreground rounded-full h-fit text-center"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+          <TagMarquee tags={tags} />
         </div>
       </motion.div>
     </motion.div>

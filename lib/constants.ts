@@ -84,6 +84,27 @@ export const navItems = [
 
 export const projects = [
   {
+    title: "Challenge Técnico - Software Engineer Web",
+    description:
+      "E-commerce gestion de cartasYu-Gi-Oh! Marketplace. Desarrollo del frontend y backend.",
+    image: "/images/Duelist_TCG.jpg",
+    tags: [
+      "NextJS",
+      "TypeScript",
+      "TailwindCSS",
+      "Supabase",
+      "shadcn/ui",
+      "Mercado Pago",
+      "Drizzle ORM",
+      "pnpm",
+      "HTML5",
+      "CSS3",
+      "VSCode",
+    ],
+    liveUrl: "https://duelist-tcg.vercel.app/",
+    githubUrl: "https://github.com/Micolash89/Challenge-T-cnico---Software-Engineer-Web",
+  },
+  {
     title: "E-commerce de Cartas Coleccionables",
     description:
       "Tienda online de cartas de Yu-Gi-Oh! y Digimon. Desarrollo del frontend.",

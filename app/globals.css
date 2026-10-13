@@ -307,3 +307,73 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ===== Carrusel infinito de tecnologías (cards de proyectos) ===== */
+.tag-marquee {
+  overflow: hidden;
+}
+
+.tag-marquee__track {
+  display: flex;
+  width: max-content;
+  gap: 0.5rem; /* mismo gap que los tags entre sí */
+}
+
+.tag-marquee--active .tag-marquee__track {
+  animation: tag-marquee var(--marquee-duration, 20s) linear infinite;
+  animation-play-state: paused;
+  will-change: transform;
+}
+
+/* Difumina los bordes para disimular el corte de la cinta */
+.tag-marquee--active {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+}
+
+@keyframes tag-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-1 * var(--marquee-shift, 0px)), 0, 0);
+  }
+}
+
+/* Desktop (mouse): se mueve mientras el puntero está sobre la card */
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover .tag-marquee--active .tag-marquee__track {
+    animation-play-state: running;
+  }
+}
+
+/* Táctil: se mueve solo mientras la fila está a la vista */
+@media (hover: none) {
+  .tag-marquee--active[data-in-view="true"] .tag-marquee__track {
+    animation-play-state: running;
+  }
+}
+
+/* Accesibilidad: sin animación, con scroll horizontal */
+@media (prefers-reduced-motion: reduce) {
+  .tag-marquee--active .tag-marquee__track {
+    animation: none;
+  }
+  .tag-marquee--active {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}

@@ -1,6 +1,14 @@
 import { envEmailConfig } from "@/lib/config/emailConfig";
 import nodemailer from "nodemailer";
 
+const escapeHtml = (value: string) =>
+  value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
 export class EmailService {
   private transporter: nodemailer.Transporter;
 
@@ -21,7 +29,7 @@ export class EmailService {
       from: '"Portfolio 3.0 mensaje" <noreply@proyect-cv.com>',
       to: envEmailConfig.email_send,
       subject: "Nuevo mensaje de contacto",
-      html: `mensaje de: <b>${name}</b> <br/> <b>email:</b> ${email} <br/> <p>${message}</p>`,
+      html: `mensaje de: <b>${escapeHtml(name)}</b> <br/> <b>email:</b> ${escapeHtml(email)} <br/> <p>${escapeHtml(message)}</p>`,
     });
   }
 }

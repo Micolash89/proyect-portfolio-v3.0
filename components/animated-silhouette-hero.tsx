@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useSyncExternalStore } from "react";
 import {
   motion,
   useScroll,
@@ -18,13 +18,33 @@ const mobileCarouselRows = [
   technologies.slice(12, 24), // Segunda fila: siguientes 12 tech
 ]
 
+const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
+
+function subscribeReducedMotion(callback: () => void) {
+  const mediaQuery = window.matchMedia(reducedMotionQuery);
+  mediaQuery.addEventListener("change", callback);
+  return () => mediaQuery.removeEventListener("change", callback);
+}
+
+function getReducedMotionSnapshot() {
+  return window.matchMedia(reducedMotionQuery).matches;
+}
+
+function getReducedMotionServerSnapshot() {
+  return false;
+}
+
 export default function AnimatedSilhouetteHero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mobileCarouselRef = useRef<HTMLDivElement>(null);
   const [phase, setPhase] = useState<"center" | "bottom">("center");
   const [isMobileCarouselActive, setIsMobileCarouselActive] = useState(false);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotionSnapshot,
+    getReducedMotionServerSnapshot
+  );
   
   // Detectar si el carrusel mobile está visible en pantalla
   const isMobileCarouselInView = useInView(mobileCarouselRef, {
@@ -74,18 +94,7 @@ export default function AnimatedSilhouetteHero() {
     return () => clearInterval(interval);
   }, []);
 
-  // Detectar preferencia de movimiento reducido
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
-    
-    const handleChange = (e: MediaQueryListEvent) => {
-      setPrefersReducedMotion(e.matches);
-    };
-    
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
+  // Detectar preferencia de movimiento reducido (gestionado por useSyncExternalStore)
 
   return (
     <div ref={containerRef} className="relative">

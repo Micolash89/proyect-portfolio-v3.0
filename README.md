@@ -1,7 +1,7 @@
 # Portfolio 3.0 - Javier Nicolás Espíndola
 
 Portfolio personal desarrollado con Next.js, TypeScript y Tailwind CSS.  
-Incluye presentación profesional, proyectos destacados, stack tecnológico, animaciones y formulario de contacto funcional.
+Incluye presentación profesional, stack tecnológico, animaciones y formulario de contacto funcional.
 
 [![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-149eca?style=flat&logo=react)](https://react.dev/)
@@ -18,20 +18,11 @@ Sitio en producción:
 
 ![Vista principal del portfolio](./public/images/og-image.jpg)
 
-### Proyectos destacados
-
-| Proyecto | Imagen |
-|---|---|
-| E-commerce de Cartas Coleccionables | ![E-commerce Cartas](./public/images/laRataDuelista.jpg) |
-| Generador de CV con IA | ![Generador CV IA](./public/images/proyect-cv.jpg) |
-| Gestión de Inscripciones | ![Gestión de estudiantes](./public/images/gestion-estudiantes.jpg) |
-| E-commerce | ![E-commerce](./public/images/e-commerce.jpg) |
-
 ## Características
 
 - Hero animado con `framer-motion`
 - Navegación responsive con menú móvil
-- Sección de proyectos con cards y enlaces
+- Sección de proyectos con cards y carrusel infinito de tecnologías (en hover en desktop, automático al estar a la vista en móvil)
 - Sección "Acerca de mí"
 - Visualización del stack tecnológico
 - Formulario de contacto con validaciones usando `zod`
@@ -121,6 +112,8 @@ proyect-portfolio-v3.0/
 ├── app/
 │   ├── layout.tsx          # Layout principal con metadata SEO
 │   ├── page.tsx            # Página de inicio
+│   ├── not-found.tsx       # Página 404
+│   ├── sitemap.ts          # Sitemap dinámico (SEO)
 │   └── globals.css         # Estilos globales
 │
 ├── components/
@@ -128,6 +121,7 @@ proyect-portfolio-v3.0/
 │   ├── navigation.tsx                  # Navbar responsive
 │   ├── projects.tsx                    # Sección de proyectos
 │   ├── project-card.tsx                # Card individual de proyecto
+│   ├── tag-marquee.tsx                 # Carrusel infinito de tecnologías
 │   ├── ray3-section.tsx                # Sección "Acerca de mí"
 │   ├── technologies.tsx                # Visualización del stack
 │   ├── contact.tsx                     # Formulario de contacto
@@ -158,8 +152,9 @@ proyect-portfolio-v3.0/
 │
 ├── package.json
 ├── tsconfig.json
-├── tailwind.config.ts
 ├── postcss.config.mjs
+├── eslint.config.mjs
+├── components.json
 ├── next.config.ts
 └── README.md
 ```
@@ -170,7 +165,7 @@ proyect-portfolio-v3.0/
 Presentación visual animada con silueta, efectos parallax y carrusel de tecnologías en móvil.
 
 ### 📋 Proyectos
-7 proyectos destacados con tarjetas interactivas, descripción, tecnologías utilizadas y enlaces a demo/GitHub.
+7 proyectos con tarjetas interactivas, descripción, carrusel de tecnologías y enlaces a demo/GitHub.
 
 ### 🛠️ Stack Tecnológico
 Visualización dinámica de todas las herramientas y tecnologías que domino.
@@ -200,6 +195,7 @@ Con `nodemailer` se envían emails automáticamente cuando el formulario es vál
 - Parallax effects en scroll
 - Animaciones de entrada al viewport
 - Efectos hover en componentes
+- Carrusel infinito de tecnologías en las cards (se pausa según hover/visibilidad)
 
 ### SEO
 - Metadata completa (Open Graph, Twitter cards)
